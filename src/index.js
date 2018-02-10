@@ -15,8 +15,6 @@ class Fun extends Module {
 		this.enabled = true;
 		this.hasPartial = false;
 		this.commands = commands;
-
-		console.log(this.commands);
 	}
 
 	start() {}

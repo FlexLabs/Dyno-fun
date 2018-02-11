@@ -11,7 +11,7 @@ class Define extends Command {
 	    this.usage        = 'define [word]';
 	    this.example      = 'define dyno';
 	    this.cooldown     = 3000;
-	    this.expectedArgs = 0;
+	    this.expectedArgs = 1;
     }
 
     async execute({ message, args }) {
@@ -25,8 +25,7 @@ class Define extends Command {
             let part_of_speech;
 
             if (dynoWords.find(w => word.toLowerCase().startsWith(w))) {
-                //definition = this.dyno.globalConfig.definition || `Moderation. Music. Commands. Utilities. Fun. It's the best Discord bot™`;
-                definition = `Moderation. Music. Commands. Utilities. Fun. It's the best Discord bot™`;
+                definition = this.dyno.globalConfig.definition || `Moderation. Music. Commands. Utilities. Fun. It's the best Discord bot™`;
                 example = 'Dude have you checked out Dyno? It\'s literally the best bot.';
                 part_of_speech = 'best bot';
             }

@@ -18,7 +18,7 @@ class Cat extends Command {
 async execute({ message }) {
     try {
             let res = await superagent.get('http://thecatapi.com/api/images/get?format=src&results_per_page=1');
-            return message.channel.createMessage({
+            return this.sendMessage(message.channel, ({
                 embed: {
                     title: "🐱 Meowww..",
                     color: 0x3498db,
@@ -31,7 +31,7 @@ async execute({ message }) {
                 }
             });
         } catch(err) {
-            return console.error(message.channel, 'An error occured: No cats found.');
+            return this.error(message.channel, 'An error occured: No cats found.');
         }
     }
 }

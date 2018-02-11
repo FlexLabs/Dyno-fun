@@ -16,10 +16,9 @@ class Dog extends Command {
         this.expectedArgs = 0;
     }
 
-async execute({ message }) {
+    async execute({ message }) {
 
-    try {
-
+         try {
             let res = await superagent.get('https://dog.ceo/api/breeds/image/random');
             return this.sendMessage(message.channel, {
                 embed: {

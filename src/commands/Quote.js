@@ -17,8 +17,7 @@ class Quote extends Command {
 	async execute({ message, args }) {
 		try {
 			let res = await superagent.get('https://talaikis.com/api/quotes/random/');
-			res = JSON.parse(res.body.text);
-			return this.sendMessage(message.channel, `${res.quote} - **${res.author}**`);
+			return this.sendMessage(message.channel, `${res.body.quote} - **${res.body.author}**`);
 		} catch(err) {
 			return this.error(message.channel, 'An error occured: Unable to fetch quote.');
 		}

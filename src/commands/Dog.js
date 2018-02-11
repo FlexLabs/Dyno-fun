@@ -2,11 +2,9 @@ const { Command } = require('@dyno.gg/dyno-core');
 const superagent = require('superagent');
 
 class Dog extends Command {
-
     constructor(...args) {
         super(...args);
 
-        this.name         = 'dog'
         this.aliases      = ['dog', 'puppy', 'doggo'];
         this.module       = 'Fun';
         this.description  = 'Find some cute dog pictures';
@@ -17,7 +15,6 @@ class Dog extends Command {
     }
 
     async execute({ message }) {
-
          try {
             let res = await superagent.get('https://dog.ceo/api/breeds/image/random');
             return this.sendMessage(message.channel, {

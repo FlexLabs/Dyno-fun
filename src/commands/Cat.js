@@ -5,7 +5,7 @@ const superagent = require('superagent');
 class Cat extends Command {
     constructor(...args) {
         super(...args);
-        this.name         = 'cat'
+
         this.aliases      = ['cat', 'kitty'];
         this.module        = 'Fun';
         this.description  = 'Find some cute cat pictures';

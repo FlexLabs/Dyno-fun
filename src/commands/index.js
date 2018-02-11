@@ -1,4 +1,5 @@
 exports.Cat = require('./Cat');
+exports.Dog = require('./Dog');
 exports.Define = require('./Define.js');
 exports.Flip = require('./Flip');
 exports.iTunes = require('./iTunes');

@@ -16,7 +16,7 @@ class iTunes extends Command {
 
 	async execute({ message, args }) {
         args = args.join(' ');
-		try {
+	    try {
             let res = await superagent.get('https://itunes.apple.com/search').query({'term': args}).query({'media':'music'});
             res = JSON.parse(res.text);
 
@@ -29,10 +29,10 @@ class iTunes extends Command {
             let albumLink = res.results[0].collectionViewUrl;
             let genre = res.results[0].primaryGenreName;
 
-			return this.sendMessage(message.channel, {embed: {
+		    return this.sendMessage(message.channel, {embed: {
                 author: {
-                    name: `${song}`,
-                    icon_url: `${icon}`
+                    name: song,
+                    icon_url: icon
                 },
                 title: `Song info:`,
                 description: `[${song}](${songLink})`,
@@ -55,9 +55,9 @@ class iTunes extends Command {
                 },
                 timestamp: new Date()
             }});
-		} catch(err) {
-			return this.error(message.channel, 'An error occured: Unable to fetch song.');
-		}
+	    } catch(err) {
+	    	return this.error(message.channel, 'An error occured: Unable to fetch song.');
+	    }
 	}
 }
 

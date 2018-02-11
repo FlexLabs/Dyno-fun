@@ -15,16 +15,28 @@ class Define extends Command {
     }
 
     async execute({ message, args }) {
+        const dynoWords = [ 'dyno', '168274283414421504', '155149108183695360'];
         let word = args[0];
 	    try {
             let res = await superagent.get('http://api.pearson.com/v2/dictionaries/ldoce5/entries').query({'headword': word});
             res = JSON.parse(res.text);
-
-            let definition = res.results[0].senses[0].definition[0];
+            let definition;
             let example;
-            if (!res.results[0].senses[0].examples) example = 'No example given.';
-            else example = res.results[0].senses[0].examples[0].text;
-            let part_of_speech = res.results[0].part_of_speech;
+            let part_of_speech;
+
+            if (dynoWords.find(w => word.toLowerCase().startsWith(w))) {
+                //definition = this.dyno.globalConfig.definition || `Moderation. Music. Commands. Utilities. Fun. It's the best Discord bot™`;
+                definition = `Moderation. Music. Commands. Utilities. Fun. It's the best Discord bot™`;
+                example = 'Dude have you checked out Dyno? It\'s literally the best bot.';
+                part_of_speech = 'best bot';
+            }
+            else {
+                definition = res.results[0].senses[0].definition[0];
+                example;
+                if (!res.results[0].senses[0].examples) example = 'No example given.';
+                else example = res.results[0].senses[0].examples[0].text;
+                part_of_speech = res.results[0].part_of_speech;
+            }
 
             return this.sendMessage(message.channel, {embed: {
                 title: `Word: ${word}`,

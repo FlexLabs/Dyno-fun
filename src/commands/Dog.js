@@ -8,7 +8,7 @@ class Dog extends Command {
 
         this.name         = 'dog'
         this.aliases      = ['dog', 'puppy', 'doggo'];
-        this.module        = 'Fun';
+        this.module       = 'Fun';
         this.description  = 'Find some cute dog pictures';
         this.usage        = 'dog';
         this.example      = 'dog';

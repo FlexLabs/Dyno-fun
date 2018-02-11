@@ -5,7 +5,7 @@ class iTunes extends Command {
 	constructor(...args) {
 		super(...args);
 
-		this.aliases      = ['iTunes'];
+		this.aliases      = ['itunes'];
 		this.module       = 'Fun';
 		this.description  = 'Get info on a song.';
 		this.usage        = 'itunes [song name]';
@@ -17,7 +17,7 @@ class iTunes extends Command {
 	async execute({ message, args }) {
         args = args.join(' ');
 	    try {
-            let res = await superagent.get('https://itunes.apple.com/search').query({'term': args}).query({'media':'music'});
+            let res = await superagent.get('https://itunes.apple.com/search').query({ term: args, media: 'music' });
             res = JSON.parse(res.text);
 
             let artist = res.results[0].artistName;

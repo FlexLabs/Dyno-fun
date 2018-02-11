@@ -21,7 +21,9 @@ class Define extends Command {
             res = JSON.parse(res.text);
 
             let definition = res.results[0].senses[0].definition[0];
-            let example = res.results[0].senses[0].examples[0].text;
+            let example;
+            if (!res.results[0].senses[0].examples) example = 'No example given.';
+            else example = res.results[0].senses[0].examples[0].text;
             let part_of_speech = res.results[0].part_of_speech;
 
             return this.sendMessage(message.channel, {embed: {

@@ -9,7 +9,7 @@ class Define extends Command {
 	    this.module       = 'Fun';
 	    this.description  = 'Define a word.';
 	    this.usage        = 'define [word]';
-	    this.example      = 'define discord';
+	    this.example      = 'define dyno';
 	    this.cooldown     = 3000;
 	    this.expectedArgs = 0;
     }

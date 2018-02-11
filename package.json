@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/FlexLabs/Dyno-fun#readme",
   "dependencies": {
-    "@dyno.gg/dyno-core": "^0.1.4"
+    "@dyno.gg/dyno-core": "^0.1.4",
+    "superagent": "^3.8.2"
   }
 }

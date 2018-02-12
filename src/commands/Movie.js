@@ -22,7 +22,7 @@ class Movie extends Command {
 			page: 1,
 			include_adult: false
 		}, (err, res) => {
-			if (err) return await this.error(msg.channel, 'Uh oh! Something went wrong with that query!');
+			if (err) return this.error(msg.channel, 'Uh oh! Something went wrong with that query!');
 
 			res = res.results[0];
 
@@ -33,7 +33,7 @@ class Movie extends Command {
 				day: 'numeric'
 			});
 
-			return await this.sendMessage(msg.channel, {
+			return this.sendMessage(msg.channel, {
 				embed: {
 					author: {
 						name: `${res.original_title} ${res.original_language !== 'en' ? `(${res.title})` : ''}`,

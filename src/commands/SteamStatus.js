@@ -23,26 +23,9 @@ class SteamStatus extends Command {
                 let steamstore = res.results[0].SteamStore;
                 let steamclient = res.results[0].ISteamClient;
 
-                let steamcommunitystatus = "";
-                if (steamcommunity.online) {
-                    steamcommunitystatus = "Online";
-                } else {
-                    steamcommunitystatus = "Offline";
-                }
-
-                let steamclientstatus = "";
-                if (steamclient.online) {
-                    steamclientstatus = "Online";
-                } else {
-                    steamclientstatus = "Offline";
-                }
-
-                let steamstorestatus = "";
-                if (steamstore.online) {
-                    steamstorestatus = "Online";
-                } else {
-                    steamstorestatus = "Offline";
-                }
+                steamcommunity.online ? 'Online' : 'Offline';
+                steamclientstatus.online ? 'Online' : 'Offline';
+                steamstorestatus.online ? 'Online' : 'Offline';
 
                 return this.sendMessage(message.channel, {
                     embed: {
@@ -50,24 +33,23 @@ class SteamStatus extends Command {
                         author: {
                             name: 'Steam Status via steamgaug.es',
                             icon_url: icon
-                        }
-                        title: 'Steam Community',
-                        description: steamcommunitystatus
-                        fields: [
-                        {
-                            name: 'Steam Client:',
-                            value: steamclientstatus
                         },
-                        {
-                            name: 'Steam Store:',
-                            value: steamstorestatus
-                        }
-                    ],
+                        title: 'Steam Community',
+                        description: steamcommunitystatus,
+                        fields: [
+                            {
+                                name: 'Steam Client:',
+                                value: steamclientstatus
+                            },
+                            {
+                                name: 'Steam Store:',
+                                value: steamstorestatus
+                            }
+                        ],
                         thumbnail: {
                             url: icon
                         },
                         timestamp: new Date()
-
                     }
                 });
             } catch(err) {

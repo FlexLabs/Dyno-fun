@@ -1,30 +1,39 @@
 const { Command } = require('@dyno.gg/dyno-core');
+const MovieDB = require('movieDB');
 
 class Movie extends Command {
 	constructor(...args) {
 		super(...args);
 
-        this.aliases        = ['movie'];
-        this.module         = 'Fun';
-        this.description    = 'Get info on a movie.';
-        this.usage          = 'movie [movie name]';
-        this.example        = 'movie Deadpool';
-        this.cooldown       = 3000;
-        this.expectedArgs   = 1;
+		this.aliases        = ['movie'];
+		this.module         = 'Fun';
+		this.description    = 'Get info on a movie.';
+		this.usage          = 'movie [movie name]';
+		this.example        = 'movie Deadpool';
+		this.cooldown       = 3000;
+		this.expectedArgs   = 1;
+		this._movieDB       = MovieDB(this.config.movieDBKey);
+	}
+	searchMovie(query) {
+		return new Promise((resolve, reject) => {
+			this._movieDB.searchMovie({
+				query: query,
+				page: 1,
+				include_adult: false
+			}, (err, res) => {
+				if (err) return reject(err);
+				return resolve(res);
+			});
+		});
 	}
 
 	async execute({ message, args }) {
-		const MovieDB = require('movieDB')(this.config.movieDBKey);
 		args = args.join(' ');
 
-		MovieDB.searchMovie({
-			query: args,
-			page: 1,
-			include_adult: false
-		}, (err, res) => {
-			if (err) return this.error(msg.channel, 'Uh oh! Something went wrong with that query!');
-
+		try {
+			let res = await searchMovie(args);
 			res = res.results[0];
+
 
 			let relDate = (new Date(res.release_date)).toLocaleDateString('en-US', {
 				weekday: 'long',
@@ -62,7 +71,9 @@ class Movie extends Command {
 					}
 				}
 			});
-		});
+		} catch (e) {
+			return this.error('Uh oh! Something went wrong!');
+		}
 	}
 }
 

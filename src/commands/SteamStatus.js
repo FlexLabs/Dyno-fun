@@ -19,9 +19,11 @@ class SteamStatus extends Command {
         try {
                 let res = await superagent.get('https://steamgaug.es/api/v2');
                 let icon = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/2000px-Steam_icon_logo.svg.png';
-                let steamcommunity = res.results[0].SteamCommunity;
-                let steamstore = res.results[0].SteamStore;
-                let steamclient = res.results[0].ISteamClient;
+                let steamcommunity = res.body.SteamCommunity;
+                let steamstore = res.body.SteamStore;
+                let steamclient = res.body.ISteamClient;
+
+                console.log(res.body);
 
                 steamcommunity.online ? 'Online' : 'Offline';
                 steamclientstatus.online ? 'Online' : 'Offline';

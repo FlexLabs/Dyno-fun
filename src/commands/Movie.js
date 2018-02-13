@@ -49,6 +49,7 @@ class Movie extends Command {
 						url: `https://www.themoviedb.org/movie/${res.id}`,
 						icon_url: 'https://www.themoviedb.org/static_cache/v4/logos/208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png'
 					},
+					color: 0x337fd5,
 					thumbnail: {
 						url: res.poster_path ? `https://image.tmdb.org/t/p/w500/${res.poster_path}` : null
 					},

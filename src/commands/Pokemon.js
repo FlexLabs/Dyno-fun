@@ -26,7 +26,7 @@ class Pokemon extends Command {
 
         this.aliases = ['pokemon', 'poke'];
         this.module = 'Fun';
-        this.description = 'Get infos about a pokemon.';
+        this.description = 'Get info on a pokemon.';
         this.usage = 'pokemon <pokemon>';
         this.example = 'pokemon pikachu';
         this.cooldown = 3000;

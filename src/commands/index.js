@@ -8,3 +8,4 @@ exports.Roll = require('./Roll');
 exports.Rps = require('./Rps');
 exports.Quote = require('./Quote');
 exports.SteamStatus = require('./SteamStatus');
+exports.Pokemon = require('./Pokemon');

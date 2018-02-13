@@ -19,6 +19,7 @@
   "dependencies": {
     "@dyno.gg/dyno-core": "^0.1.4",
     "moviedb": "^0.2.10",
+    "pokedex-promise-v2": "^3.1.1",
     "superagent": "^3.8.2"
   }
 }

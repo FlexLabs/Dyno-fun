@@ -7,5 +7,6 @@ exports.Pug = require('./Pug');
 exports.Roll = require('./Roll');
 exports.Rps = require('./Rps');
 exports.Quote = require('./Quote');
+exports.Movie = require('./Movie');
 exports.SteamStatus = require('./SteamStatus');
 exports.Pokemon = require('./Pokemon');

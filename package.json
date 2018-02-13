@@ -18,6 +18,7 @@
   "homepage": "https://github.com/FlexLabs/Dyno-fun#readme",
   "dependencies": {
     "@dyno.gg/dyno-core": "^0.1.4",
+    "moviedb": "^0.2.10",
     "superagent": "^3.8.2"
   }
 }

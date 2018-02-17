@@ -12,7 +12,10 @@ class Movie extends Command {
 		this.example        = 'movie Deadpool';
 		this.cooldown       = 3000;
 		this.expectedArgs   = 1;
-		this._movieDB       = MovieDB(this.config.movieDBKey);
+
+		if (this.config.movieDBKey) {
+			this._movieDB = MovieDB(this.config.movieDBKey);
+		}
 	}
 	searchMovie(query) {
 		return new Promise((resolve, reject) => {
@@ -28,6 +31,10 @@ class Movie extends Command {
 	}
 
 	async execute({ message, args }) {
+		if (!this._movieDB) {
+			return Promise.reject();
+		}
+
 		args = args.join(' ');
 
 		try {

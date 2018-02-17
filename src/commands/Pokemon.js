@@ -60,6 +60,55 @@ class Pokemon extends Command {
 
         let pokeName = args.join(' ').toLowerCase();
 
+        if (pokeName === "dyno") {
+            return this.sendMessage(message.channel, {
+                embed: {
+                    author: {
+                        name: 'Dyno',
+                        icon_url: 'http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG12.png'
+                    },
+                    color: 0x337fd5,
+                    thumbnail: {
+                        url: 'https://cdn.discordapp.com/attachments/391343682156232714/406339436314624000/dinoa_party.png'
+                    },
+                    timestamp: new Date(),
+                    fields: [
+                        {
+                            name: 'Height',
+                            value: 'Bigger than you.',
+                            inline: true
+                        },
+                        {
+                            name: 'Weight',
+                            value: 'Fitter than you.',
+                            inline: true
+                        },
+                        {
+                            name: 'Type',
+                            value: 'SuperDyno',
+                            inline: true
+                        },
+                        {
+                            name: `Abilities [Infinity]`,
+                            value: 'The All-powerful Ban Hammer, ∞',
+                            inline: true
+                        },
+                        {
+                            name: 'Stats',
+                            value: 'Speed [∞], Special-defense [∞], Special-attack [∞], Defense [∞], Attack [∞], Hp [∞]',
+                            inline: true
+                        },
+                        {
+                            name: `Moves [Infinity]`,
+                            value: 'Better than yours, ∞',
+                            inline: true
+                        },
+                    ]
+                }
+            })
+        }
+
+
         try {
             let res = await P.getPokemonByName(pokeName);
 
@@ -99,7 +148,7 @@ class Pokemon extends Command {
                             inline: true
                         },
                         {
-                            name: `Stats [${res.stats.length}]`,
+                            name: 'Stats',
                             value: res.stats.map(a => `${capitalizeFirst(a.stat.name)} [${a.base_stat}]`).join(', '),
                             inline: true
                         },

@@ -108,7 +108,6 @@ class Pokemon extends Command {
             })
         }
 
-
         try {
             let res = await P.getPokemonByName(pokeName);
 

@@ -85,12 +85,12 @@ class Pokemon extends Command {
                         },
                         {
                             name: 'Type',
-                            value: 'SuperDyno',
+                            value: 'Extraordinary',
                             inline: true
                         },
                         {
                             name: `Abilities [Infinity]`,
-                            value: 'The All-powerful Ban Hammer, ∞',
+                            value: 'The All-Powerful Ban Hammer, ∞',
                             inline: true
                         },
                         {

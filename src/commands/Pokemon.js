@@ -24,7 +24,7 @@ class Pokemon extends Command {
     constructor(...args) {
         super(...args);
 
-        this.aliases = ['pokemon', 'poke'];
+        this.aliases = ['pokemon'];
         this.module = 'Fun';
         this.description = 'Get info on a pokemon.';
         this.usage = 'pokemon <pokemon>';
@@ -33,7 +33,7 @@ class Pokemon extends Command {
         this.expectedArgs = 1;
     }
 
-    execute({ message, args }) {
+    async execute({ message, args }) {
 
         const P = new Pokedex();
 

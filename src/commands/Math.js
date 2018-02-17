@@ -14,13 +14,13 @@ class Math extends Command {
 	}
 
 	execute({ message, args }) {
-		const math = require('mathjs')
+		const math = require('mathjs');
 		try {
-			let input = args.join(' ')
-            let output = math.eval(input).toString()
-            return this.sendMessage(messsage.channel, `Answer: ${output}`)
+			let input = args.join(' ');
+            let output = math.eval(input).toString();
+            return this.sendMessage(messsage.channel, `Answer: ${output}`);
 		} catch (e) {
-			return this.sendMessage(message.channel, "Couldn't evaluate the given expression!")
+			return this.sendMessage(message.channel, "Couldn't evaluate the given expression!");
 		}
 	}
 }

@@ -18,7 +18,7 @@ class Country extends Command {
     async execute({ message }) {
         try {
             let countrycode = args[0];
-            let res = await superagent.get('https://https://restcountries.eu/rest/v2/alpha/' + countrycode);
+            let res = await superagent.get('https://restcountries.eu/rest/v2/alpha/' + countrycode);
 
             let countryname = res.body.name;
             let countrypopulation = res.body.population;

@@ -25,46 +25,60 @@ class Country extends Command {
             let countryregion = res.body.subregion;
             let countrycapital = res.body.capital;
             let countrydemonym = res.body.demonym;
-            let countryarea = res.body.area;
+            let countryareakm = res.body.area;
+            let countryaream = parseInt(countryareakm * 0.62137).toLocaleString('en');
             let countrynativename = res.body.nativeName;
             let countrycurrencyname = res.body.currencies[0].name;
             let countrycurrencysymbol = res.body.currencies[0].symbol;
-            
+            let countryflag = `http://www.countryflags.io/${res.body.alpha2Code}/flat/64.png`;
+
             return this.sendMessage(message.channel, {
                 embed: {
                     author: {
                         name: 'Country Information - ' + countrycode,
+                        icon_url: countryflag
                     },
+                    thumbnail: {
+                        url: countryflag
+                    },
+                    color: 0x337fd5,
                     title: countryname,
                     fields: [
                         {
                             name: 'Population',
-                            value: countrypopulation
-                        },
-                        {
-                            name: 'Located in',
-                            value: countryregion
+                            value: countrypopulation.toLocaleString('en'),
+                            inline: true
                         },
                         {
                             name: 'Capital City',
-                            value: countrycapital
-                        },
-                        {
-                            name: 'Demonym',
-                            value: countrydemonym
-                        },
-                        {
-                            name: 'Area',
-                            value: countryarea
-                        },
-                        {
-                            name: 'Native Name',
-                            value: countrynativename
+                            value: countrycapital,
+                            inline: true
                         },
                         {
                             name: 'Main currency',
-                            value: countrycurrencyname + ' (' + countrycurrencysymbol + ')'
-                        }
+                            value: countrycurrencyname + ' (' + countrycurrencysymbol + ')',
+                            inline: true
+                        },
+                        {
+                            name: 'Located in',
+                            value: countryregion,
+                            inline: true
+                        },
+                        {
+                            name: 'Demonym',
+                            value: countrydemonym,
+                            inline: true
+                        },
+                        {
+                            name: 'Native Name',
+                            value: countrynativename,
+                            inline: true
+                        },
+                        {
+                            name: 'Area',
+                            value: `${countryareakm.toLocaleString('en')}km (${countryaream}m)`,
+                            inline: true
+                        },
                     ],
                     timestamp: new Date(),
                     footer: {
@@ -72,10 +86,10 @@ class Country extends Command {
                     }
                 }
             });
-        } catch(err) {
+        } catch (err) {
             return this.error(message.channel, 'Error! Unable to fetch country information.');
         }
     }
 }
 
-module.exports = SteamStatus;
+module.exports = Country;

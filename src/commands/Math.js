@@ -1,4 +1,5 @@
 const { Command } = require('@dyno.gg/dyno-core');
+const math = require('mathjs');
 
 class Math extends Command {
 	constructor(...args) {
@@ -14,11 +15,10 @@ class Math extends Command {
 	}
 
 	execute({ message, args }) {
-		const math = require('mathjs');
 		try {
 			let input = args.join(' ');
-            let output = math.eval(input).toString();
-            return this.sendMessage(messsage.channel, `Answer: ${output}`);
+            		let output = math.eval(input).toString();
+            		return this.sendMessage(messsage.channel, `Answer: ${output}`);
 		} catch (e) {
 			return this.sendMessage(message.channel, "Couldn't evaluate the given expression!");
 		}

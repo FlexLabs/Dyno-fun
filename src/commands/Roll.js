@@ -33,6 +33,8 @@ class Roll extends Command {
 
 			if (dsize[args[0].toLowerCase()]) {
 
+				dice = args[1] ? args[1] : 1;
+
 				if (args[0] === 'd4' ) {
 					
 					for (let i = 0; i < dice; i++) {
@@ -43,7 +45,6 @@ class Roll extends Command {
 				}
 
 				side = dsize[args[0]];
-				dice = args[1] ? args[1] : 1;
 
 			} else if (!isNaN(args[0])) {
 

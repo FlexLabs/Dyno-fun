@@ -11,3 +11,4 @@ exports.Movie = require('./Movie');
 exports.SteamStatus = require('./SteamStatus');
 exports.Pokemon = require('./Pokemon');
 exports.ChuckNorris = require('./ChuckNorris');
+exports.DadJoke = require('./DadJoke');

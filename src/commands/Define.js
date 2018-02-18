@@ -45,7 +45,7 @@ class Define extends Command {
                 else example = res.results[0].senses[0].examples[0].text;
                 part_of_speech = res.results[0].part_of_speech;
             } catch(err) {
-                return this.error(message.channel, 'Are you sure this word exist? Unable to find a definition!');
+                return this.error(message.channel, 'Are you sure this word exist? Unable to find definition!');
             }
         }
         

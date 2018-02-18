@@ -10,7 +10,7 @@ class Space extends Command {
         this.description  = 'Get info about the ISS.';
         this.usage        = 'space';
         this.example      = 'space';
-        this.cooldown     = 3000;
+        this.cooldown     = 9000;
         this.expectedArgs = 0;
     }
 
@@ -53,9 +53,8 @@ class Space extends Command {
                 }
                 embed.fields.push({ name: `**${craft}**`, value: ppl.join('\n') });
             }
-            this.sendMessage(message.channel, {
-                embed: embed
-            });
+
+            this.sendMessage(message.channel, { embed });
         }
         catch (err) {
             return this.error(message.channel, 'Unable to fetch ISS info. Please try again later.')

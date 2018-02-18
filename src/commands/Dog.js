@@ -10,7 +10,7 @@ class Dog extends Command {
         this.description  = 'Find some cute dog pictures';
         this.usage        = 'dog';
         this.example      = 'dog';
-        this.cooldown     = 3500;
+        this.cooldown     = 7500;
         this.expectedArgs = 0;
     }
 

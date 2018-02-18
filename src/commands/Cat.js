@@ -11,7 +11,7 @@ class Cat extends Command {
         this.description  = 'Find some cute cat pictures';
         this.usage        = 'cat';
         this.example      = 'cat';
-        this.cooldown     = 3500;
+        this.cooldown     = 7500;
         this.expectedArgs = 0;
     }
 

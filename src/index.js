@@ -10,6 +10,7 @@ class Fun extends Module {
 	constructor(...args) {
 		super(...args);
 		this.module = 'Fun';
+		this.friendlyName = 'Fun';
 		this.description = 'Adds fun commands to your server!';
 		this.list = true;
 		this.enabled = true;
@@ -20,4 +21,4 @@ class Fun extends Module {
 	start() {}
 }
 
-module.exports = Fun;
+exports.Fun = Fun;

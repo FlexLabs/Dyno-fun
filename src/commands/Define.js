@@ -10,7 +10,7 @@ class Define extends Command {
 	    this.description  = 'Define a word.';
 	    this.usage        = 'define [word]';
 	    this.example      = 'define dyno';
-	    this.cooldown     = 3000;
+	    this.cooldown     = 5000;
 	    this.expectedArgs = 1;
     }
 

@@ -29,12 +29,11 @@ class Pokemon extends Command {
         this.description = 'Get info on a pokemon.';
         this.usage = 'pokemon <pokemon>';
         this.example = 'pokemon pikachu';
-        this.cooldown = 3000;
+        this.cooldown = 5000;
         this.expectedArgs = 1;
     }
 
     async execute({ message, args }) {
-
         const P = new Pokedex();
 
         const color = {
@@ -61,7 +60,7 @@ class Pokemon extends Command {
         let pokeName = args.join(' ').toLowerCase();
 
         if (pokeName === "dyno") {
-            return this.sendMessage(message.channel, {
+            const embed = {
                 embed: {
                     author: {
                         name: 'Dyno',
@@ -73,39 +72,19 @@ class Pokemon extends Command {
                     },
                     timestamp: new Date(),
                     fields: [
-                        {
-                            name: 'Height',
-                            value: 'Bigger than you.',
-                            inline: true
-                        },
-                        {
-                            name: 'Weight',
-                            value: 'Fitter than you.',
-                            inline: true
-                        },
-                        {
-                            name: 'Type',
-                            value: 'Extraordinary',
-                            inline: true
-                        },
-                        {
-                            name: `Abilities [Infinity]`,
-                            value: 'The All-Powerful Ban Hammer, ∞',
-                            inline: true
-                        },
-                        {
-                            name: 'Stats',
+                        { name: 'Height', value: 'Bigger than you.', inline: true },
+                        { name: 'Weight', value: 'Fitter than you.', inline: true },
+                        { name: 'Type', value: 'Extraordinary', inline: true },
+                        { name: `Abilities [Infinity]`, value: 'The All-Powerful Ban Hammer, ∞', inline: true },
+                        { name: 'Stats',
                             value: 'Speed [∞], Special-defense [∞], Special-attack [∞], Defense [∞], Attack [∞], Hp [∞]',
-                            inline: true
-                        },
-                        {
-                            name: `Moves [Infinity]`,
-                            value: 'Better than yours, ∞',
-                            inline: true
-                        },
+                            inline: true },
+                        { name: `Moves [Infinity]`, value: 'Better than yours, ∞', inline: true },
                     ]
                 }
-            })
+            };
+
+            return this.sendMessage(message.channel, { embed });
         }
 
         try {

@@ -11,7 +11,7 @@ class SteamStatus extends Command {
         this.description  = 'Check the status of Steam';
         this.usage        = 'steamstatus';
         this.example      = 'steamstatus';
-        this.cooldown     = 3500;
+        this.cooldown     = 9000;
         this.expectedArgs = 0;
     }
 

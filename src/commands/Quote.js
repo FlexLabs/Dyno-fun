@@ -10,7 +10,7 @@ class Quote extends Command {
 		this.description  = 'Get a random quote.';
 		this.usage        = 'quote';
 		this.example      = 'quote';
-		this.cooldown     = 3000;
+		this.cooldown     = 5000;
 		this.expectedArgs = 0;
 	}
 

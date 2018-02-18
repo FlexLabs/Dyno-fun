@@ -10,7 +10,7 @@ class Movie extends Command {
 		this.description    = 'Get info on a movie.';
 		this.usage          = 'movie [movie name]';
 		this.example        = 'movie Deadpool';
-		this.cooldown       = 3000;
+		this.cooldown       = 6000;
 		this.expectedArgs   = 1;
 
 		if (this.config.movieDBKey) {

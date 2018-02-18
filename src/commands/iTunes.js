@@ -10,7 +10,7 @@ class iTunes extends Command {
 		this.description  = 'Get info on a song.';
 		this.usage        = 'itunes [song name]';
 		this.example      = 'itunes Perfect Duet';
-		this.cooldown     = 3000;
+		this.cooldown     = 7500;
 		this.expectedArgs = 1;
 	}
 

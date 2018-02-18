@@ -12,23 +12,23 @@ class DadJoke extends Command {
 		this.description  = 'Get a random Dad joke.';
 		this.usage        = 'dadjoke';
 		this.example      = 'dadjoke';
-		this.cooldown     = 3000;
+		this.cooldown     = 5000;
 		this.expectedArgs = 0;
 	}
 
 	async execute({ message }) {
-        try {
-            let res = await superagent
-                .get('https://icanhazdadjoke.com/')
-                .set( { Accept: 'application/json' } );
-            
-            return this.sendMessage(message.channel, JSON.parse(res.text).joke);
+		try {
+			let res = await superagent
+				.get('https://icanhazdadjoke.com/')
+				.set( { Accept: 'application/json' } );
+			
+			return this.sendMessage(message.channel, JSON.parse(res.text).joke);
 
-        } catch (err) {
-            return this.error(message.channel, 'Error 404: Humor module not found!');
-        }
-        
-    }
+		} catch (err) {
+			return this.error(message.channel, 'Error 404: Humor module not found!');
+		}
+		
+	}
 	
 }
 

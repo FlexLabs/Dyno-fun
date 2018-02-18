@@ -10,7 +10,7 @@ class Pug extends Command {
         this.description  = 'Find some cute pug pictures';
         this.usage        = 'pug';
         this.example      = 'pug';
-        this.cooldown     = 3500;
+        this.cooldown     = 7500;
         this.expectedArgs = 0;
     }
 

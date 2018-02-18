@@ -12,21 +12,21 @@ class ChuckNorris extends Command {
 		this.description  = 'Get a random Dyno Norris fact.';
 		this.usage        = 'dynorris';
 		this.example      = 'dynorris';
-		this.cooldown     = 3000;
+		this.cooldown     = 5000;
 		this.expectedArgs = 0;
 	}
 
 	async execute({ message }) {
-        try {
-            let res = await superagent.get('https://api.icndb.com/jokes/random?firstName=Dyno');
-            
-            return this.sendMessage(message.channel, res.body.value.joke);
+		try {
+			let res = await superagent.get('https://api.icndb.com/jokes/random?firstName=Dyno');
+			
+			return this.sendMessage(message.channel, res.body.value.joke);
 
-        } catch (err) {
-            return this.error(message.channel, 'No facts founds.. Something went wrong.');
-        }
-        
-    }
+		} catch (err) {
+			return this.error(message.channel, 'No facts founds.. Something went wrong.');
+		}
+		
+	}
 	
 }
 

@@ -135,7 +135,7 @@ class Math extends Command {
             }
         }
 
-        this.sendMessage(message.channel, result);
+        return this.sendMessage(message.channel, result);
 	}
 }
 

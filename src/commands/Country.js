@@ -35,7 +35,7 @@ class Country extends Command {
             return this.sendMessage(message.channel, {
                 embed: {
                     author: {
-                        name: 'Country Information - ' + countrycode,
+                        name: 'Country Information - ' + countrycode.toUpperCase(),
                         icon_url: countryflag
                     },
                     thumbnail: {
@@ -55,7 +55,7 @@ class Country extends Command {
                             inline: true
                         },
                         {
-                            name: 'Main currency',
+                            name: 'Main Currency',
                             value: countrycurrencyname + ' (' + countrycurrencysymbol + ')',
                             inline: true
                         },

@@ -33,7 +33,7 @@ class Roll extends Command {
 
 			if (dsize[args[0].toLowerCase()]) {
 
-				if (args[0] === 'd4' ) {
+				if (args[0] === 'd00' ) {
 					
 					for (let i = 0; i < dice; i++) {
 						results.push( (Math.floor(Math.random() * 10) *10) + Math.floor(Math.random() * 10) + '%');

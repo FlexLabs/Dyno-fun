@@ -33,6 +33,15 @@ class Roll extends Command {
 
 			if (dsize[args[0].toLowerCase()]) {
 
+				if (args[0] === 'd4' ) {
+					
+					for (let i = 0; i < dice; i++) {
+						results.push( (Math.floor(Math.random() * 10) *10) + Math.floor(Math.random() * 10) + '%');
+					}
+					results = results.join(', ');
+					return this.sendMessage(message.channel, `${message.author.mention} You rolled ${results}`);
+				}
+
 				side = dsize[args[0]];
 				dice = args[1] ? args[1] : 1;
 

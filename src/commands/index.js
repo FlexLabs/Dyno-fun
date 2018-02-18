@@ -6,6 +6,7 @@ exports.iTunes = require('./iTunes');
 exports.Pug = require('./Pug');
 exports.Roll = require('./Roll');
 exports.Rps = require('./Rps');
+exports.Space = require('./Space');
 exports.Quote = require('./Quote');
 exports.Movie = require('./Movie');
 exports.SteamStatus = require('./SteamStatus');

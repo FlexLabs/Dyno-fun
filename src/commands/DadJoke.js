@@ -25,7 +25,7 @@ class DadJoke extends Command {
             return this.sendMessage(message.channel, JSON.parse(res.text).joke);
 
         } catch (err) {
-            return this.error(message.channel, 'No joke founds.. Something went wrong.');
+            return this.error(message.channel, 'Error 404: Humor module not found!');
         }
         
     }

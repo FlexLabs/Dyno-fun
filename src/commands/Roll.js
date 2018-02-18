@@ -32,7 +32,9 @@ class Roll extends Command {
 		if (args.length > 0) {
 
 			if (dsize[args[0].toLowerCase()]) {
-
+				
+				dice = args[1] ? args[1] : 1;
+				
 				if (args[0] === 'd00' ) {
 					
 					for (let i = 0; i < dice; i++) {

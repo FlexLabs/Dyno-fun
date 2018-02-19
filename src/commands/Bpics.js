@@ -29,7 +29,7 @@ class Birb extends Command {
 			let res = await superagent.get('https://random.birb.pw/tweet/random');
 
 			if (!res || !res.redirects || !res.redirects.length) {
-                return this.error(message.channel, errorText);
+                	    return this.error(message.channel, errorText);
             }
 
 			return msg.edit({

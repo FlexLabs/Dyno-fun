@@ -30,7 +30,7 @@ class Birb extends Command {
 
 			if (!res || !res.redirects || !res.redirects.length) {
                 	    return this.error(message.channel, errorText);
-            }
+            		}
 
 			return msg.edit({
 				content: response.found,

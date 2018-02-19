@@ -15,3 +15,4 @@ exports.ChuckNorris = require('./ChuckNorris');
 exports.DadJoke = require('./DadJoke');
 exports.Joke = require('./Joke');
 exports.AdorableAvatar = require('./Adorable');
+exports.Country = require('./Country');

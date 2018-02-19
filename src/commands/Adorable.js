@@ -14,15 +14,16 @@ class AdorableAvatar extends Command {
 	}
 
 	execute({ message, args }) {
-		return this.sendMessage(message.channel, {embed: {
-        title: `Getting an adorable ${args}!`,
-        color: 0x3498db,
-        image: {
-            url: `https://api.adorable.io/avatars/285/${args}.png`,
-        },
-        url: `https://api.adorable.io/avatars/285/${args}.png`,
-      },
-    });
+		const embed = {
+			title: `Getting an adorable ${args}!`,
+			color: 0x3498db,
+			image: {
+				url: `https://api.adorable.io/avatars/285/${args}.png`,
+			},
+			url: `https://api.adorable.io/avatars/285/${args}.png`,
+		};
+
+		return this.sendMessage(message.channel, { embed });
 	}
 }
 

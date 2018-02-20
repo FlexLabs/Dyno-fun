@@ -11,14 +11,14 @@ class CatFacts extends Command {
 		this.usage          = 'catfact';
 		this.example        = 'catfact';
 		this.cooldown       = 5000;
-		this.expectedArgs   = 1;
+		this.expectedArgs   = 0;
 	}	
 
 		async execute({ message }) {
 			try {
 				let res = await superagent.get('https://catfact.ninja/fact');
 				
-				return this.sendMessage(message.channel, res.body.value.joke);
+				return this.sendMessage(message.channel, res.body.fact);
 	
 			} catch (err) {
 				return this.error(message.channel, 'No Cat facts founds.. Something went wrong.');
@@ -29,5 +29,3 @@ class CatFacts extends Command {
 	}
 	
 	module.exports = CatFacts; 
-
-

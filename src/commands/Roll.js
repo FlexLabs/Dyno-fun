@@ -6,7 +6,7 @@ class Roll extends Command {
 
 		this.aliases 		= ['roll'];
 		this.module 		= 'Fun';
-		this.description 	= 'Roll the dice (support optional size: d4, d8, d10, d12, d20, d00)';
+		this.description 	= 'Roll a dice (support optional size: d4, d8, d10, d12, d20, d00)';
 		this.usage 		= 'roll [size] [number of dice]';
 		this.example 		= 'roll 5\nroll d20\nroll d00 4';
 		this.cooldown 		= 3000;

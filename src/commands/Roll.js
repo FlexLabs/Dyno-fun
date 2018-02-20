@@ -33,7 +33,7 @@ class Roll extends Command {
 
 			if (dsize[args[0].toLowerCase()]) {
 				
-				dice = args[1] ? args[1] : 1;
+				dice = ( args[1] && !isNaN(args[1]) ) ? args[1] : 1;
 				
 				if (args[0] === 'd00' ) {
 					

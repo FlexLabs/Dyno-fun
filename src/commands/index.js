@@ -16,3 +16,6 @@ exports.DadJoke = require('./DadJoke');
 exports.Joke = require('./Joke');
 exports.AdorableAvatar = require('./Adorable');
 exports.Country = require('./Country');
+exports.Birb = require('./Birb');
+exports.DogFacts = require('./DogFacts');
+exports.CatFacts = require('./CatFacts');

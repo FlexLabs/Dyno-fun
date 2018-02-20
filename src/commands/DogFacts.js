@@ -17,7 +17,7 @@ class DogFacts extends Command {
 		async execute({ message }) {
 			try {
 				let res = await superagent.get('https://fact.birb.pw/api/v1/dog');
-				
+
 				return this.sendMessage(message.channel, res.body.string);
 	
 			} catch (err) {

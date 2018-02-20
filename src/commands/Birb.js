@@ -32,7 +32,7 @@ class Birb extends Command {
 			return msg.edit({
 				content: response.found,
 				embed: {
-					title: "https://random.birb.pw/tweet/random Tweet Tweet..",
+					title: "Tweet Tweet..",
 					color: 0x008080,
 					image: {
 						url: `https://random.birb.pw/img/${res.text}`,

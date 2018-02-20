@@ -74,10 +74,9 @@ class Pokemon extends Command {
                     { name: 'Height', value: 'Bigger than you.', inline: true },
                     { name: 'Weight', value: 'Fitter than you.', inline: true },
                     { name: 'Type', value: 'Extraordinary', inline: true },
-                    { name: `Abilities [Infinity]`, value: 'The All-Powerful Ban Hammer, ∞', inline: true },
+                    { name: `Abilities [Infinity]`, value: 'The All-Powerful Ban Hammer, ∞' },
                     { name: 'Stats',
-                        value: 'Speed [∞], Special-defense [∞], Special-attack [∞], Defense [∞], Attack [∞], Hp [∞]',
-                        inline: true },
+                        value: 'Speed [∞], Special-defense [∞], Special-attack [∞], Defense [∞], Attack [∞], Hp [∞]' },
                     { name: `Moves [Infinity]`, value: 'Better than yours, ∞', inline: true },
                 ],
             };

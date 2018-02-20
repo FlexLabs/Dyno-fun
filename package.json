@@ -1,6 +1,6 @@
 {
   "name": "@dyno.gg/fun",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Fun module for use in Dyno.",
   "engineStrict": true,
   "engines": {

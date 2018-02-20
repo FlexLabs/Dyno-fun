@@ -8,7 +8,7 @@ class Birb extends Command {
 
         this.aliases      = ['bird', 'birb', 'lunar'];
         this.module       = 'Fun';
-        this.description  = 'Tweet Tweet birb pictures';
+        this.description  = 'Random Adorable Birdies';
         this.usage        = 'bird';
         this.example      = 'bird';
         this.cooldown     = 7500;
@@ -26,21 +26,18 @@ class Birb extends Command {
 			const response = responses[utils.getRandomInt(0, responses.length - 1)];
 			const msg = await this.sendMessage(message.channel, response.search);
 
-			let res = await superagent.get('https://random.birb.pw/tweet/random');
+			let res = await superagent.get('https://random.birb.pw/tweet/');
 
-			if (!res || !res.redirects || !res.redirects.length) {
-                	    return this.error(message.channel, errorText);
-            		}
 
 			return msg.edit({
 				content: response.found,
 				embed: {
 					title: "https://random.birb.pw/tweet/random Tweet Tweet..",
-					color: 0x3498db,
+					color: 0x008080,
 					image: {
-						url: res.redirects[0],
+						url: `https://random.birb.pw/img/${res.text}`,
 					},
-					url: res.redirects[0],
+					url: `https://random.birb.pw/img/${res.text}`,
 				},
 			});
 		} catch(err) {

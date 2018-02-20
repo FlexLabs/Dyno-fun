@@ -37,6 +37,8 @@ class Roll extends Command {
 				
 				if (args[0] === 'd00' ) {
 					
+					dice = dice > 5 ? 5 : dice;
+					
 					for (let i = 0; i < dice; i++) {
 						results.push( (Math.floor(Math.random() * 10) *10) + Math.floor(Math.random() * 10) + '%');
 					}

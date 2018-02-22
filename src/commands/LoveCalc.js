@@ -68,7 +68,7 @@ class LoveCalc extends Command {
 			return this.sendMessage(message.channel, { embed });
 
 		} catch (err) {
-			return this.error(message.channel, 'You have no compatibility with this command, an error occured!');
+			return this.error(message.channel, 'An error occured: You are incompatible with this command!');
 		}
 
 	}

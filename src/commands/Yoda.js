@@ -14,7 +14,7 @@ class Yoda extends Command {
 		this.example      = 'yoda I can speak like Master Yoda!';
 		this.cooldown     = 5000;
         this.expectedArgs = 1;
-        this._apiKey = this.config.mashapeAPI.key;
+        this._apiKey 	  = this.config.mashapeAPI.key;
 	}
 
 	async execute({ message, args }) {
@@ -23,7 +23,7 @@ class Yoda extends Command {
 
 			let res = await superagent
 				.get(`https://yoda.p.mashape.com/yoda?sentence=${input}`)
-				.set('X-Mashape-Key', _apiKey)
+				.set('X-Mashape-Key', this._apiKey)
 				.set( 'Accept', 'text/plain' );
 			
 			return this.sendMessage(message.channel, res.text);

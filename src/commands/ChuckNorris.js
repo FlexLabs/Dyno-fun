@@ -20,7 +20,9 @@ class ChuckNorris extends Command {
 		try {
 			let res = await superagent.get('https://api.icndb.com/jokes/random?firstName=Dyno');
 			
-			return this.sendMessage(message.channel, res.body.value.joke);
+			let mess = res.body.value.joke.split('&quot;').join('\"');
+
+			return this.sendMessage(message.channel, mess);
 
 		} catch (err) {
 			return this.error(message.channel, 'No facts founds.. Something went wrong.');

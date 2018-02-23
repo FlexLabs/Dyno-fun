@@ -18,7 +18,7 @@ class Trivia extends Command {
 			try {
 				let res = await superagent.get('http://jservice.io/api/random'); // http://jservice.io/api/random is the api site, there is so much to add.  
 				
-               	 		return this.sendMessage(message.channel, res.body[0].question);
+               	 	return this.sendMessage(message.channel, res.body[0].question);
 	
 			} catch (err) {
 				return this.error(message.channel, 'No Trivia questions found... Something went wrong');

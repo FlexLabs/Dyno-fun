@@ -42,7 +42,7 @@ class Bunnies extends Command {
 				},
 			});
 		} catch(err) {
-			return this.error(message.channel, errorText);
+			return this.error(message.channel, 'No Bunny pictures found... Something went wrong.);
 		}
 	}
 }

@@ -20,3 +20,6 @@ exports.Birb = require('./Birb');
 exports.DogFacts = require('./DogFacts');
 exports.CatFacts = require('./CatFacts');
 exports.Trivia = require('./Trivia');
+exports.Bunnies = require('./Bunnies');
+exports.YoMama = require('./YoMama');
+exports.Trump = require('./Trump');

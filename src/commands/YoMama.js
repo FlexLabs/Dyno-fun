@@ -7,7 +7,7 @@ class YoMama extends Command {
 
 		this.aliases        = ['yomama', 'mamajoke']; // Yoooo mama!
 		this.module         = 'Fun';
-		this.description    = 'Roast your friends with these mama joke (Dyno is not responsible for any broken hearts or broken friendships.';
+		this.description    = 'Roast your friends with these mama joke (Dyno is not responsible for any broken hearts or broken friendships.)';
 		this.usage          = 'yomama';
 		this.example        = 'yomama';
 		this.cooldown       = 5000;

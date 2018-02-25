@@ -19,3 +19,4 @@ exports.Country = require('./Country');
 exports.Birb = require('./Birb');
 exports.DogFacts = require('./DogFacts');
 exports.CatFacts = require('./CatFacts');
+exports.Weather = require('./Weather');

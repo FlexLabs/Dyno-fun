@@ -15,7 +15,10 @@ class Weather extends Command {
     }
 
     ftoc(f) {
-        return Math.round(((5 / 9) * (f - 32)) * 100) / 100
+        return Math.round(((5 / 9) * (f - 32)) * 100) / 100;
+    }
+    mphtokph(mph) {
+        return Math.round(mph * 1.609344);
     }
 
     async execute({ message, args }) {
@@ -53,13 +56,13 @@ class Weather extends Command {
                     color: 0x337fd5,
                     fields: [
                         {
-                            name: 'Wind:',
-                            value: `Speed: ${result.wind.speed} MPH`,
+                            name: 'Wind Speed:',
+                            value: `${result.wind.speed} MPH (${this.mphtokph(result.wind.speed)} KPH)`,
                             inline: true
                         },
                         {
                             name: 'Condition:',
-                            value: `${result.item.condition.temp}°F (${ftoc(result.item.condition.temp)}°C) - ${result.item.condition.text}`,
+                            value: `${result.item.condition.temp}°F (${this.ftoc(result.item.condition.temp)}°C) - ${result.item.condition.text}`,
                             inline: true
                         },
                         {
@@ -74,7 +77,7 @@ class Weather extends Command {
                         },
                         {
                             name: 'High/Low Temperatures:',
-                            value: `Highest: ${forecast[0].high}°F (${ftoc(forecast[0].high)}°C)\nLowest: ${forecast[0].low}°F (${forecast[0].low}°C)`,
+                            value: `Highest: ${forecast[0].high}°F (${this.ftoc(forecast[0].high)}°C)\nLowest: ${forecast[0].low}°F (${forecast[0].low}°C)`,
                             inline: true
                         },
                         {

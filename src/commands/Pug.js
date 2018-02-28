@@ -1,15 +1,15 @@
 const { Command } = require('@dyno.gg/dyno-core');
 const superagent = require('superagent');
 
-class Dog extends Command {
+class Pug extends Command {
     constructor(...args) {
         super(...args);
 
-        this.aliases      = ['dog', 'doggo'];
+        this.aliases      = ['pug', 'carti'];
         this.module       = 'Fun';
-        this.description  = 'Find some cute dog pictures';
-        this.usage        = 'dog';
-        this.example      = 'dog';
+        this.description  = 'Find some cute pug pictures';
+        this.usage        = 'pug';
+        this.example      = 'pug';
         this.cooldown     = 7500;
         this.expectedArgs = 0;
     }
@@ -17,15 +17,15 @@ class Dog extends Command {
     async execute({ message }) {
          try {
             const utils = this.utils;
-            const errorText = `Error: ${this.config.emojis.saddog || ''} No dogs found.`;
+            const errorText = `Error: ${this.config.emojis.saddog || ''} No pugs found.`;
 			const responses = [
-				{ search: 'Looking for a doggo...', found: 'Found one!' },
+				{ search: 'Finding a puggo...', found: this.config.emojis.carti || '<a:carti:393640270945845258>' },
 			];
 
 			const response = responses[utils.getRandomInt(0, responses.length - 1)];
             const msg = await this.sendMessage(message.channel, response.search);
 
-            let res = await superagent.get('https://dog.ceo/api/breeds/image/random');
+			let res = await superagent.get('https://dog.ceo/api/breed/pug/images/random');
 
             if (!res || !res.body || !res.body.message) {
                 return this.error(message.channel, errorText);
@@ -34,7 +34,7 @@ class Dog extends Command {
             return msg.edit({
                 content: response.found,
                 embed: {
-                    title: `${this.config.emojis.dog || '🐶'} Woof!`,
+                    title: `${this.config.emojis.dog || '🐶'} Ruff!`,
                     color: 0x3498db,
                     image: {
                         url: res.body.message,
@@ -48,4 +48,4 @@ class Dog extends Command {
     }
 }
 
-module.exports = Dog;
+module.exports = Pug;

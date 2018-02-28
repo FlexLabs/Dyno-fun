@@ -10,7 +10,7 @@ class Define extends Command {
 	    this.description  = 'Define a word.';
 	    this.usage        = 'define [word]';
 	    this.example      = 'define dyno';
-	    this.cooldown     = 3000;
+	    this.cooldown     = 5000;
 	    this.expectedArgs = 1;
     }
 
@@ -45,7 +45,7 @@ class Define extends Command {
                 else example = res.results[0].senses[0].examples[0].text;
                 part_of_speech = res.results[0].part_of_speech;
             } catch(err) {
-                return this.error(message.channel, 'An error occured: Unable to find definition.');
+                return this.error(message.channel, 'Couldn\'t find any definition for this word!');
             }
         }
         

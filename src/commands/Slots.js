@@ -1,5 +1,4 @@
 const { Command } = require('@dyno.gg/dyno-core');
-const superagent = require('superagent');
 
 class Slots extends Command {
     constructor(...args) {

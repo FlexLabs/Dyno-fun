@@ -49,7 +49,7 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-	      					url: "https://78.media.tumblr.com/c5a88d833a45233d7026e62449484ee1/tumblr_mh79cfON001r88gpzo1_400.gif"
+	      					url: "https://s17.postimg.org/w4v2gei1r/tumblr_mh79cf_ON001r88gpzo1_400.gif"
 	    				}
 					}
 				}) }, 2000)		
@@ -86,7 +86,7 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-	      					url: "https://media.giphy.com/media/aaMosvrTpTvCo/giphy.gif"
+	      					url: "https://s17.postimg.org/j0pi3qd5b/giphy.gif"
 	   		 			}
 					}
 				}) }, 2000)
@@ -103,7 +103,7 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-	    	  				url:"https://media3.giphy.com/media/xTiQyqTVSJfqp8Uvss/giphy.gif"
+	    	  				url:"https://s17.postimg.org/dcj7cxgjj/giphy.gif"
 	    				}
 					}
 				}) }, 2000)

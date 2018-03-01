@@ -24,7 +24,12 @@ class Slots extends Command {
 		let gameid = frst.toString() + scnd.toString() + thrd.toString()
 		let special = ["154", "215", "512", "451"]
 
-		let result = `\n<:dynov4:341008963254484992> ***DYNO SLOTS*** <:dynov4:341008963254484992>\n\n--------------------------\n\\\u2198     ${emojis[frst - 1]}  ${emojis[scnd - 1]}  ${emojis[thrd - 1]}     \\\u2199\n\n\\\u25B6    ${emojis[frst]}  ${emojis[scnd]}  ${emojis[thrd]}    \\\u25C0\n\n\\\u2197     ${emojis[frst + 1]}  ${emojis[scnd + 1]}  ${emojis[thrd + 1]}     \\\u2196\n--------------------------\n\n\n`
+		let result = `\n<:dynov4:341008963254484992> ***DYNO SLOTS*** <:dynov4:341008963254484992>\n\n`
+		result += `--------------------------\n`
+		result += `\\\u2198     ${emojis[frst - 1]}  ${emojis[scnd - 1]}  ${emojis[thrd - 1]}     \\\u2199\n\n`
+		result += `\\\u25B6    ${emojis[frst]}  ${emojis[scnd]}  ${emojis[thrd]}    \\\u25C0\n\n`
+		result += `\\\u2197     ${emojis[frst + 1]}  ${emojis[scnd + 1]}  ${emojis[thrd + 1]}     \\\u2196`
+		result += `\n--------------------------\n\n\n`
 
 		msg.channel.createMessage({
 			embed:{
@@ -32,8 +37,8 @@ class Slots extends Command {
 				description:`Spinning the wheels of fortune for [${msg.member.username}](https://dynobot.net)...`,
 				color: 1259143,
 				thumbnail: {
-	      			url: "https://s18.postimg.org/hmpvac5qh/dynoslots_spin.gif"
-	    		}
+	      				url: "https://s18.postimg.org/hmpvac5qh/dynoslots_spin.gif"
+	    			}
 			}
 		}).then(newmsg => {
 			if(gameid === "555" && bonus === 15) {
@@ -49,8 +54,8 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-	      					url: "https://s17.postimg.org/w4v2gei1r/tumblr_mh79cf_ON001r88gpzo1_400.gif"
-	    				}
+	      						url: "https://s17.postimg.org/w4v2gei1r/tumblr_mh79cf_ON001r88gpzo1_400.gif"
+	    					}
 					}
 				}) }, 2000)		
 			}//this thing was made by Mika K.#2002 btw... If my discrim should change in the future or I should go missing, my user ID on Discord is 264762392683085834
@@ -67,9 +72,8 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-
-	      					url:"https://s18.postimg.org/u6kzxx9bd/dynoslots_win2.gif"
-	    				}
+							url:"https://s18.postimg.org/u6kzxx9bd/dynoslots_win2.gif"
+	    					}
 					}
 				}) }, 2000)
 			}
@@ -86,7 +90,7 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-	      					url: "https://s17.postimg.org/j0pi3qd5b/giphy.gif"
+	      						url: "https://s17.postimg.org/j0pi3qd5b/giphy.gif"
 	   		 			}
 					}
 				}) }, 2000)
@@ -103,8 +107,8 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-	    	  				url:"https://s17.postimg.org/dcj7cxgjj/giphy.gif"
-	    				}
+	    	  					url:"https://s17.postimg.org/dcj7cxgjj/giphy.gif"
+	    					}
 					}
 				}) }, 2000)
 			}

@@ -42,7 +42,7 @@ class Slots extends Command {
 			}
 		}).then(newmsg => {
 			if(gameid === "555" && bonus === 15) {
-				let points = "`" + bonus.toString() + gameid + "`"
+				let points = "`" + bonus.toString() + gameid + "`";
 				setTimeout(function() { msg.channel.editMessage(newmsg.id, {
 					embed:{
 						title:"JACKPOT!",
@@ -60,7 +60,7 @@ class Slots extends Command {
 				}) }, 2000)		
 			}//this thing was made by Mika K.#2002 btw... If my discrim should change in the future or I should go missing, my user ID on Discord is 264762392683085834
 			else if(frst === scnd && scnd === thrd || frst - 1 === scnd && scnd === thrd + 1 || frst + 1 === scnd && scnd === thrd - 1 || special.indexOf(gameid) > -1) {
-				let points = "`" + bonus.toString() + gameid + "`"
+				let points = "`" + bonus.toString() + gameid + "`";
 				setTimeout(function() { msg.channel.editMessage(newmsg.id, {
 					embed:{
 						title:"Congratulations!",
@@ -78,7 +78,7 @@ class Slots extends Command {
 				}) }, 2000)
 			}
 			else if(frst === scnd || scnd === thrd) {
-				let points = "`" + gameid + "`"
+				let points = "`" + gameid + "`";
 				setTimeout(function() { msg.channel.editMessage(newmsg.id, {
 					embed:{
 						title:"Thats a pair!",

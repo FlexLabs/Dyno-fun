@@ -12,6 +12,25 @@ class Slots extends Command {
         this.cooldown     = 5000;
         this.expectedArgs = 0;
     }
+	checkJackpot(gameid, bonus) {
+		if(gameid === "555" && bonus === 15) return true //basically just checking if the highest possible score was reached
+		else return false 
+	}
+	
+	checkTriple(frst, scnd, thrd, gameid) {
+		const special = ["154", "215", "512", "451"] //these gameIDs are valid triples even though they do not follow the standard scheme
+		
+		if(frst === scnd && scnd === thrd) return true //If all emojis on the middle line are the same
+		else if(frst - 1 === scnd && scnd === thrd + 1) return true  //If all emojis on the diagonal starting at the bottom left are the same
+		else if(frst + 1 === scnd && scnd === thrd - 1) return true //if all emojis on the diagonal starting at the top left are the same
+		else if(special.indexOf(gameid) > -1) return true //If it doesnt follow the scheme but is still a valid triple
+		else return false
+	}
+	
+	checkDouble(frst, scnd, thrd) {
+		if(frst === scnd || scnd === thrd) return true //If either the first or the last two on the middle line are the same
+		else return false
+	}
 
 	execute({ msg }) {
 
@@ -22,7 +41,6 @@ class Slots extends Command {
 		let thrd = Math.floor(Math.random() * 5) + 1
 		let bonus = Math.floor(Math.random() * 10) + 6
 		let gameid = frst.toString() + scnd.toString() + thrd.toString()
-		let special = ["154", "215", "512", "451"]
 
 		let result = `\n<:dynov4:341008963254484992> ***DYNO SLOTS*** <:dynov4:341008963254484992>\n\n`
 		result += `--------------------------\n`
@@ -41,7 +59,7 @@ class Slots extends Command {
 	    			}
 			}
 		}).then(newmsg => {
-			if(gameid === "555" && bonus === 15) {
+			if(checkJackpot(gameid, bonus)) {
 				let points = "`" + bonus.toString() + gameid + "`";
 				setTimeout(function() { msg.channel.editMessage(newmsg.id, {
 					embed:{
@@ -59,7 +77,7 @@ class Slots extends Command {
 					}
 				}) }, 2000)		
 			}//this thing was made by Mika K.#2002 btw... If my discrim should change in the future or I should go missing, my user ID on Discord is 264762392683085834
-			else if(frst === scnd && scnd === thrd || frst - 1 === scnd && scnd === thrd + 1 || frst + 1 === scnd && scnd === thrd - 1 || special.indexOf(gameid) > -1) {
+			else if(checkTriple(frst, scnd, thrd, gameid)) {
 				let points = "`" + bonus.toString() + gameid + "`";
 				setTimeout(function() { msg.channel.editMessage(newmsg.id, {
 					embed:{
@@ -77,7 +95,7 @@ class Slots extends Command {
 					}
 				}) }, 2000)
 			}
-			else if(frst === scnd || scnd === thrd) {
+			else if(checkDouble(frst, scnd, thrd)) {
 				let points = "`" + gameid + "`";
 				setTimeout(function() { msg.channel.editMessage(newmsg.id, {
 					embed:{
@@ -95,7 +113,7 @@ class Slots extends Command {
 					}
 				}) }, 2000)
 			}
-			else {
+			else { //if none of the above was true, the player has lost, so no additional check here
 				setTimeout(function() { msg.channel.editMessage(newmsg.id, {
 					embed:{
 						title:"Try again!",

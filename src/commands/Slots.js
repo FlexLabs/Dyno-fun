@@ -1,17 +1,17 @@
 const { Command } = require('@dyno.gg/dyno-core');
 
 class Slots extends Command {
-    constructor(...args) {
-        super(...args);
+	constructor(...args) {
+		super(...args);
 
-       	this.aliases      = ['slots'];
-        this.module       = 'Fun';
-        this.description  = 'Spin the slots and win the jackpot! ...or loose everything.';
-        this.usage        = 'slots';
-        this.example      = 'slots';
-        this.cooldown     = 5000;
-        this.expectedArgs = 0;
-    }
+	   	this.aliases      = ['slots'];
+		this.module       = 'Fun';
+		this.description  = 'Spin the slots and win the jackpot! ...or loose everything.';
+		this.usage        = 'slots';
+		this.example      = 'slots';
+		this.cooldown     = 5000;
+		this.expectedArgs = 0;
+	}
 
 	checkJackpot(gameid, bonus) {
 		if(gameid === "555" && bonus === 15) { return true } //basically just checking if the highest possible score was reached
@@ -56,8 +56,8 @@ class Slots extends Command {
 				description:`Spinning the wheels of fortune for [${msg.member.username}](https://dynobot.net)...`,
 				color: 1259143,
 				thumbnail: {
-	      			url: "https://s18.postimg.org/hmpvac5qh/dynoslots_spin.gif"
-	    		}
+		  			url: "https://s18.postimg.org/hmpvac5qh/dynoslots_spin.gif"
+				}
 			}
 		}).then(newmsg => {
 			if(checkJackpot(gameid, bonus)) {
@@ -72,8 +72,8 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-	      					url: "https://s17.postimg.org/w4v2gei1r/tumblr_mh79cf_ON001r88gpzo1_400.gif"
-	    				}
+		  					url: "https://s17.postimg.org/w4v2gei1r/tumblr_mh79cf_ON001r88gpzo1_400.gif"
+						}
 					}
 				}) }, 2000)		
 			} //this thing was made by Mika K.#2002 btw... If my discrim should change in the future or I should go missing, my user ID on Discord is 264762392683085834
@@ -90,7 +90,7 @@ class Slots extends Command {
 						},
 						thumbnail: {
 							url:"https://s18.postimg.org/u6kzxx9bd/dynoslots_win2.gif"
-	    				}
+						}
 					}
 				}) }, 2000)
 			}
@@ -106,7 +106,7 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-	      					url: "https://s17.postimg.org/j0pi3qd5b/giphy.gif"
+		  					url: "https://s17.postimg.org/j0pi3qd5b/giphy.gif"
 	   		 			}
 					}
 				}) }, 2000)
@@ -123,8 +123,8 @@ class Slots extends Command {
 							icon_url:msg.member.avatarURL
 						},
 						thumbnail: {
-	    	  				url:"https://s17.postimg.org/dcj7cxgjj/giphy.gif"
-	    				}
+			  				url:"https://s17.postimg.org/dcj7cxgjj/giphy.gif"
+						}
 					}
 				}) }, 2000)
 			}

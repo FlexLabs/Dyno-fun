@@ -19,5 +19,6 @@ exports.Country = require('./Country');
 exports.Birb = require('./Birb');
 exports.DogFacts = require('./DogFacts');
 exports.CatFacts = require('./CatFacts');
+exports.Slots = require('./Slots');
 exports.Weather = require('./Weather');
 exports.Github = require('./Github');

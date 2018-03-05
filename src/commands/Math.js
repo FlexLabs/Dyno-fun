@@ -3,14 +3,14 @@ const superagent = require('superagent');
 const math = require('mathjs');
 //
 async function request(i) {
-   	return await superagent.get(`http://numbersapi.com/${i}?json`);
-};  
+    return await superagent.get(`http://numbersapi.com/${i}?json`);
+}
 //
 
 class Math extends Command {
 	constructor(...args) {
 		super(...args);
-		
+
 		this.aliases      = ['math', 'calc'];
 		this.module       = 'Fun';
 		this.description  = 'Math command';
@@ -22,50 +22,49 @@ class Math extends Command {
 
 	async execute({ message, args }) {
 		const input = args.join(' ');
-    	const errmsg = {
+        const errmsg = {
             exp: 'Couldn\'t evaluate the given expression',
             err: 'An Error Occured',
-            fact: 'Couldn\'t get any facts for that number'
+            fact: 'Couldn\'t get any facts for that number',
         };
         let res; // Used to get number facts
-        let output; // Output from mathjs 
+        let output; // Output from mathjs
         let result = {}; // Sends the result message
             result.embed = {};
             result.embed.fields = [];
             result.embed.color = 0x41dae2;
 
-        if(args[0].toLowerCase() == 'fact') {
+        if (args[0].toLowerCase() === 'fact') {
             try {
-
                 res = await request('random/math');
 
-                if(res.body.found) {
+                if (res.body.found) {
                     result.embed.fields.push({
                         name: `Fact about ${res.body.number}`,
                         value: res.body.text,
-                        inline: false
+                        inline: false,
                     });
                 }
             } catch (e) {
                 result = errmsg.err;
-            };
+            }
 
             return this.sendMessage(message.channel, result);
         }
 
-        if(args.length === 1 && !isNaN(args[0])) {
+        if (args.length === 1 && !isNaN(args[0])) {
                 const ainput = (input.startsWith('.')) ? '0' + input : input;
                 res = await request(`${ainput.split('.')[0]}/math`);
 
-                if(res.body.found) {
+                if (res.body.found) {
                     result.embed.fields.push({
                         name: `Fact about ${res.body.number}`,
                         value: res.body.text,
-                        inline: false
+                        inline: false,
                     });
                 } else {
                     result = errmsg.fact;
-                };
+                }
         } else {
             try {
                 output = math.eval(input).toString();
@@ -73,20 +72,19 @@ class Math extends Command {
                 result.embed.fields.push({
                     name: 'Input',
                     value: input,
-                    inline: false
+                    inline: false,
                 });
 
                 result.embed.fields.push({
                     name: 'Output',
                     value: output,
-                    inline: false
+                    inline: false,
                 });
-
             } catch (e) {
                 result = errmsg.exp;
-            };
-        };
-        
+            }
+        }
+
         return this.sendMessage(message.channel, result);
 	}
 }

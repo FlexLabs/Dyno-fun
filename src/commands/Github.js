@@ -20,61 +20,60 @@ class Github extends Command {
         if (args.includes('/')) {
             args = args.split('/');
             url = `https://api.github.com/repos/${args[0]}/${args[1]}`;
-        }
-        else {
+        } else {
             url = `https://api.github.com/search/repositories?q=${args}`;
         }
-        
+
         try {
             let res = await superagent.get(url);
-            if (url == `https://api.github.com/search/repositories?q=${args}`) res.body = res.body.items[0];
+            if (url === `https://api.github.com/search/repositories?q=${args}`) res.body = res.body.items[0];
             return this.sendMessage(message.channel, {
                 embed: {
                     author: {
                         name: res.body.owner.login,
                         url: res.body.owner.html_url,
-                        icon_url: res.body.owner.avatar_url
+                        icon_url: res.body.owner.avatar_url,
                     },
                     thumbnail: {
-                        url: res.body.owner.avatar_url
+                        url: res.body.owner.avatar_url,
                     },
                     fields: [
                         {
                             name: 'Repository:',
                             value: `[${res.body.name}](${res.body.html_url})`,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Most Used Language:',
                             value: res.body.language,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Forks:',
                             value: res.body.forks_count,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Watchers:',
                             value: res.body.watchers_count,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: `Open Issues:`,
                             value: res.body.open_issues_count,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'License:',
                             value: res.body.license.name,
-                            inline: true
-                        }
+                            inline: true,
+                        },
                     ],
                     timestamp: res.body.created_at,
                     footer: {
-                        text: 'Repo created at '
-                    }
-                }
+                        text: 'Repo created at ',
+                    },
+                },
             });
         } catch (err) {
             return this.error(message.channel, 'An error has occured: Unable to fetch repository');

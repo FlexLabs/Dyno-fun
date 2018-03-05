@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const { Command } = require('@dyno.gg/dyno-core');
 const Pokedex = require('pokedex-promise-v2');
@@ -54,20 +54,20 @@ class Pokemon extends Command {
             dragon: 0x6124F5,
             dark: 0x5E493C,
             style: 0xA6A6C4,
-            fairy: 0xE484E4
-        }
+            fairy: 0xE484E4,
+        };
 
         let pokeName = args.join(' ').toLowerCase();
 
-        if (pokeName === "dyno") {
+        if (pokeName === 'dyno') {
             const embed = {
                 author: {
                     name: 'Dyno',
-                    icon_url: 'http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG12.png'
+                    icon_url: 'http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG12.png',
                 },
                 color: 0x337fd5,
                 thumbnail: {
-                    url: 'https://cdn.discordapp.com/attachments/391343682156232714/406339436314624000/dinoa_party.png'
+                    url: 'https://cdn.discordapp.com/attachments/391343682156232714/406339436314624000/dinoa_party.png',
                 },
                 timestamp: new Date(),
                 fields: [
@@ -94,49 +94,49 @@ class Pokemon extends Command {
                 embed: {
                     author: {
                         name: capitalizeFirst(res.species.name),
-                        icon_url: 'http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG12.png'
+                        icon_url: 'http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG12.png',
                     },
                     color: color[res.types[0].type.name],
                     thumbnail: {
-                        url: res.sprites.front_default
+                        url: res.sprites.front_default,
                     },
                     timestamp: new Date(),
                     fields: [
                         {
                             name: 'Height',
                             value: `${toFeet(height)} (${height}cm)`,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Weight',
                             value: `${kToLbs(weight)} (${weight}kg)`,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: res.types.length > 1 ? 'Types' : 'Type',
                             value: res.types.map(a => capitalizeFirst(a.type.name)).join(', '),
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: `Abilities [${res.abilities.length}]`,
                             value: res.abilities.map(a => capitalizeFirst(a.ability.name)).join(', '),
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Stats',
                             value: res.stats.map(a => `${capitalizeFirst(a.stat.name)} [${a.base_stat}]`).join(', '),
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: `Moves [${res.moves.length}]`,
                             value: res.moves.map(a => capitalizeFirst(a.move.name)).slice(0, 5).join(', '),
-                            inline: true
+                            inline: true,
                         },
-                    ]
-                }
-            })
+                    ],
+                },
+            });
         } catch (err) {
-            return this.sendMessage(message.channel, "Oh no, this pokemon is not referenced in the pokedex!");
+            return this.sendMessage(message.channel, 'Oh no, this pokemon is not referenced in the pokedex!');
         }
     }
 }

@@ -16,9 +16,10 @@ class Cat extends Command {
     }
 
     async execute({ message }) {
+		const errorText = `Error: ${this.config.emojis.sadcat || '😿'} No cats found.`;
+
         try {
 			const utils = this.utils;
-			const errorText = `Error: ${this.config.emojis.sadcat || '😿'} No cats found.`;
 			const responses = [
 				{ search: 'Looking for a kitty...', found: 'Found one!' },
 			];
@@ -35,7 +36,7 @@ class Cat extends Command {
 			return msg.edit({
 				content: response.found,
 				embed: {
-					title: "🐱 Meowww..",
+					title: '🐱 Meowww..',
 					color: 0x3498db,
 					image: {
 						url: res.redirects[0],
@@ -43,7 +44,7 @@ class Cat extends Command {
 					url: res.redirects[0],
 				},
 			});
-		} catch(err) {
+		} catch (err) {
 			return this.error(message.channel, errorText);
 		}
 	}

@@ -19,15 +19,12 @@ class ChuckNorris extends Command {
 	async execute({ message }) {
 		try {
 			let res = await superagent.get('https://api.icndb.com/jokes/random?firstName=Dyno');
-			
-			return this.sendMessage(message.channel, res.body.value.joke);
 
+			return this.sendMessage(message.channel, res.body.value.joke);
 		} catch (err) {
 			return this.error(message.channel, 'No facts founds.. Something went wrong.');
 		}
-		
 	}
-	
 }
 
 module.exports = ChuckNorris;

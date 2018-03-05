@@ -20,16 +20,13 @@ class DadJoke extends Command {
 		try {
 			let res = await superagent
 				.get('https://icanhazdadjoke.com/')
-				.set( { Accept: 'application/json' } );
-			
-			return this.sendMessage(message.channel, JSON.parse(res.text).joke);
+				.set({ Accept: 'application/json' });
 
+			return this.sendMessage(message.channel, JSON.parse(res.text).joke);
 		} catch (err) {
 			return this.error(message.channel, 'Error 404: Humor module not found!');
 		}
-		
 	}
-	
 }
 
 module.exports = DadJoke;

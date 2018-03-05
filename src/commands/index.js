@@ -14,6 +14,7 @@ exports.Pokemon = require('./Pokemon');
 exports.ChuckNorris = require('./ChuckNorris');
 exports.DadJoke = require('./DadJoke');
 exports.Joke = require('./Joke');
+exports.Math = require('./Math');
 exports.AdorableAvatar = require('./Adorable');
 exports.Country = require('./Country');
 exports.Birb = require('./Birb');

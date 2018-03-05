@@ -17,7 +17,7 @@ class Fun extends Module {
 		this.hasPartial = false;
 		this.commands = commands;
 	}
-
+	// ok fixed the pr
 	// eslint-disable-next-line no-empty-function
 	start() { }
 }

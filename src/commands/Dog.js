@@ -15,9 +15,10 @@ class Dog extends Command {
     }
 
     async execute({ message }) {
+        const errorText = `Error: ${this.config.emojis.saddog || ''} No dogs found.`;
+
          try {
             const utils = this.utils;
-            const errorText = `Error: ${this.config.emojis.saddog || ''} No dogs found.`;
 			const responses = [
 				{ search: 'Looking for a doggo...', found: 'Found one!' },
 			];
@@ -42,7 +43,7 @@ class Dog extends Command {
                     url: res.body.message,
                 },
             });
-        } catch(err) {
+        } catch (err) {
             return this.error(message.channel, errorText);
         }
     }

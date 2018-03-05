@@ -14,7 +14,7 @@ class Space extends Command {
         this.expectedArgs = 0;
     }
 
-    async execute({ message, args }) {
+    async execute({ message }) {
         try {
             let [iss, issPeople] = await Promise.all([
                 superagent.get('http://api.open-notify.org/iss-now.json'),
@@ -34,7 +34,7 @@ class Space extends Command {
             let embed = {
                 author: {
                     name: 'ISS Info',
-                    icon_url: 'https://d30y9cdsu7xlg0.cloudfront.net/png/381875-200.png'
+                    icon_url: 'https://d30y9cdsu7xlg0.cloudfront.net/png/381875-200.png',
                 },
                 description: `**Location of the ISS now:** \n${location}\n\n**Humans in Space (${issPeople.number}):**`,
                 color: 0x3498db,
@@ -42,9 +42,9 @@ class Space extends Command {
 
                 ],
                 image: {
-                    url: 'http://www.businessforum.com/nasa01.JPEG'
+                    url: 'http://www.businessforum.com/nasa01.JPEG',
                 },
-                timestamp: new Date()
+                timestamp: new Date(),
             };
 
             for (let [craft, ppl] of Object.entries(humans)) {
@@ -55,9 +55,8 @@ class Space extends Command {
             }
 
             this.sendMessage(message.channel, { embed });
-        }
-        catch (err) {
-            return this.error(message.channel, 'Unable to fetch ISS info. Please try again later.')
+        } catch (err) {
+            return this.error(message.channel, 'Unable to fetch ISS info. Please try again later.');
         }
     }
 }

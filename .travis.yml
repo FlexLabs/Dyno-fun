@@ -2,5 +2,5 @@ language: node_js
 node_js:
   - "8"
 cache: npm
-install: npm i eslint
-script: npm run lint
+install: npm i eslint --global
+script: eslint .

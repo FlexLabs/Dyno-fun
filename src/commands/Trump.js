@@ -12,18 +12,17 @@ class Trump extends Command {
 		this.example        = 'trump';
 		this.cooldown       = 5000;
 		this.expectedArgs   = 0;
-	}	
+	}
 
 		async execute({ message }) {
 			try {
 				let res = await superagent.get('https://api.whatdoestrumpthink.com/api/v1/quotes/random');
-				
+
 				return this.sendMessage(message.channel, res.body.message);
-	
 			} catch (err) {
 				return this.error(message.channel, 'No Trump quotes found...  Something went wrong.');
 			}
 		}
 	}
-	
-module.exports = Trump; 
+
+module.exports = Trump;

@@ -1,4 +1,3 @@
-
 const { Command } = require('@dyno.gg/dyno-core');
 const superagent = require('superagent');
 
@@ -27,14 +26,12 @@ class Bunnies extends Command {
 			const response = responses[utils.getRandomInt(0, responses.length - 1)];
 			const msg = await this.sendMessage(message.channel, response.search);
 
-            let res = await superagent.get('https://api.bunnies.io/v2/loop/random/?media=poster');
-        
-        
+			let res = await superagent.get('https://api.bunnies.io/v2/loop/random/?media=poster');
 
 			return msg.edit({
 				content: response.found,
 				embed: {
-					title: "Bunnies!!!",
+					title: 'Bunnies!!!',
 					color: 0x008080,
 					image: {
 						url: `https://random.birb.pw/img/${res.body.media.poster}`,
@@ -42,9 +39,10 @@ class Bunnies extends Command {
 					url: `https://random.birb.pw/img/${res.body.media.poster}`,
 				},
 			});
-		} catch(err) {
-			return this.error(message.channel, 'No Bunny pictures found... Something went wrong.');
+		} catch (err) {
+			return this.error(message.channel, errorText);
 		}
 	}
 }
 module.exports = Bunnies;
+

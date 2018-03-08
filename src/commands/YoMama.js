@@ -12,17 +12,16 @@ class YoMama extends Command {
 		this.example        = 'yomama';
 		this.cooldown       = 5000;
 		this.expectedArgs   = 0;
-	}	
+	}
 
 		async execute({ message }) {
 			try {
-				let res = await superagent.get('http://api.yomomma.info/');	
+				let res = await superagent.get('http://api.yomomma.info/');
 			return this.sendMessage(message.channel, JSON.parse(res.text).joke);
-	
 			} catch (err) {
 				return this.error(message.channel, 'No Mama jokes founds...  Something went wrong.');
 			}
 		}
 	}
-	
-module.exports = YoMama; 
+
+module.exports = YoMama;

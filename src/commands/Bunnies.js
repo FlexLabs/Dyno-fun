@@ -16,9 +16,9 @@ class Bunnies extends Command {
     }
 
     async execute({ message }) {
+		const errorText = `Error: ${this.config.emojis.rabbit || '🐰'} No bunnies found.`;
         try {
 			const utils = this.utils;
-			const errorText = `Error: ${this.config.emojis.rabbit || '🐰'} No bunnies found.`;
 			const responses = [
 				{ search: 'Looking for a bunnies...', found: 'Found one!' },
 			];

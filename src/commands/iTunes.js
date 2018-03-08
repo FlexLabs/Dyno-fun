@@ -33,7 +33,7 @@ class iTunes extends Command {
 				embed: {
 					author: {
 						name: song,
-						icon_url: icon
+						icon_url: icon,
 					},
 					title: `Song info:`,
 					description: `[${song}](${songLink})`,
@@ -41,21 +41,21 @@ class iTunes extends Command {
 					fields: [
 						{
 							name: 'Artist:',
-							value: `[${artist}](${artistLink})`
+							value: `[${artist}](${artistLink})`,
 						},
 						{
 							name: 'Album:',
-							value: `[${album}](${albumLink})`
-						}
+							value: `[${album}](${albumLink})`,
+						},
 					],
 					thumbnail: {
-						url: icon
+						url: icon,
 					},
 					footer: {
-						text: `Genre: ${genre}`
+						text: `Genre: ${genre}`,
 					},
-					timestamp: new Date()
-				}
+					timestamp: new Date(),
+				},
 			});
 		} catch (err) {
 			return this.error(message.channel, 'An error occured: Unable to fetch song.');

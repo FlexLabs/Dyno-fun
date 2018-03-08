@@ -14,11 +14,11 @@ class Quote extends Command {
 		this.expectedArgs = 0;
 	}
 
-	async execute({ message, args }) {
+	async execute({ message }) {
 		try {
 			let res = await superagent.get('https://talaikis.com/api/quotes/random/');
 			return this.sendMessage(message.channel, `${res.body.quote} - **${res.body.author}**`);
-		} catch(err) {
+		} catch (err) {
 			return this.error(message.channel, 'An error occured: Unable to fetch quote.');
 		}
 	}

@@ -20,17 +20,14 @@ class Joke extends Command {
 		try {
 			let res = await superagent
 				.get('https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke')
-				.set( { Accept: 'application/json' } );
-			
+				.set({ Accept: 'application/json' });
+
 			let mess = '- ' + res.body.setup.split('\n').join('\n-') + '\n- ' + res.body.punchline;
 			return this.sendMessage(message.channel, mess);
-
 		} catch (err) {
 			return this.error(message.channel, 'Error 404: Humor module not found!');
 		}
-		
 	}
-	
 }
 
 module.exports = Joke;

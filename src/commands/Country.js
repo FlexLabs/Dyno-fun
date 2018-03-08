@@ -248,7 +248,7 @@ const countries = [
     { name: 'Western Sahara', alpha2: 'EH', alpha3: 'ESH' },
     { name: 'Yemen', alpha2: 'YE', alpha3: 'YEM' },
     { name: 'Zambia', alpha2: 'ZM', alpha3: 'ZMB' },
-    { name: 'Zimbabwe', alpha2: 'ZW', alpha3: 'ZWE' }
+    { name: 'Zimbabwe', alpha2: 'ZW', alpha3: 'ZWE' },
 ];
 
 class Country extends Command {
@@ -275,7 +275,7 @@ class Country extends Command {
                 country = countries.find(c => c.alpha3 === args[0].toUpperCase());
             }
         }
-    
+
         if (!country) {
             country = countries.find(c => c.name.toLowerCase().search(args.join(' ').toLowerCase()) !== -1);
         }
@@ -308,10 +308,10 @@ class Country extends Command {
                 embed: {
                     author: {
                         name: 'Country Information - ' + countrycode,
-                        icon_url: countryflag
+                        icon_url: countryflag,
                     },
                     thumbnail: {
-                        url: countryflag
+                        url: countryflag,
                     },
                     color: 0x337fd5,
                     title: countryname,
@@ -319,47 +319,46 @@ class Country extends Command {
                         {
                             name: 'Population',
                             value: countrypopulation.toLocaleString('en'),
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Capital City',
                             value: countrycapital,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Main currency',
                             value: countrycurrencyname + ' (' + countrycurrencysymbol + ')',
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Located in',
                             value: countryregion,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Demonym',
                             value: countrydemonym,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Native Name',
                             value: countrynativename,
-                            inline: true
+                            inline: true,
                         },
                         {
                             name: 'Area',
                             value: `${countryareakm.toLocaleString('en')}km (${countryaream}m)`,
-                            inline: true
+                            inline: true,
                         },
                     ],
                     timestamp: new Date(),
                     footer: {
-                        text: "via restcountries.eu"
-                    }
-                }
+                        text: 'via restcountries.eu',
+                    },
+                },
             });
         } catch (err) {
-            console.error(err);
             return this.error(message.channel, 'Error! Unable to fetch country information.');
         }
     }

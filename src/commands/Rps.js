@@ -3,7 +3,7 @@ const { Command } = require('@dyno.gg/dyno-core');
 class Rps extends Command {
 	constructor(...args) {
 		super(...args);
-		
+
 		this.aliases      = ['rps'];
 		this.module       = 'Fun';
 		this.description  = 'Rock Paper Scissors with the bot.';
@@ -67,6 +67,7 @@ class Rps extends Command {
 					default:
 						msgArray.push('Scissors win!');
 				}
+				break;
 			default:
 				return Promise.resolve();
 		}

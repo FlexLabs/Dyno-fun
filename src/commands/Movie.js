@@ -1,5 +1,5 @@
 const { Command } = require('@dyno.gg/dyno-core');
-const MovieDB = require('movieDB');
+const movieDB = require('movieDB');
 
 class Movie extends Command {
 	constructor(...args) {
@@ -14,7 +14,7 @@ class Movie extends Command {
 		this.expectedArgs   = 1;
 
 		if (this.config.movieDBKey) {
-			this._movieDB = MovieDB(this.config.movieDBKey);
+			this._movieDB = movieDB(this.config.movieDBKey);
 		}
 	}
 	searchMovie(query) {
@@ -22,7 +22,7 @@ class Movie extends Command {
 			this._movieDB.searchMovie({
 				query: query,
 				page: 1,
-				include_adult: false
+				include_adult: false,
 			}, (err, res) => {
 				if (err) return reject(err);
 				return resolve(res);
@@ -30,7 +30,7 @@ class Movie extends Command {
 		});
 	}
 
-	async execute({ message, args }) {
+	async execute({ msg, args }) {
 		if (!this._movieDB) {
 			return Promise.reject();
 		}
@@ -38,7 +38,7 @@ class Movie extends Command {
 		args = args.join(' ');
 
 		try {
-			let res = await searchMovie(args);
+			let res = await this.searchMovie(args);
 			res = res.results[0];
 
 
@@ -46,7 +46,7 @@ class Movie extends Command {
 				weekday: 'long',
 				year: 'numeric',
 				month: 'long',
-				day: 'numeric'
+				day: 'numeric',
 			});
 
 			return this.sendMessage(msg.channel, {
@@ -54,11 +54,11 @@ class Movie extends Command {
 					author: {
 						name: `${res.original_title} ${res.original_language !== 'en' ? `(${res.title})` : ''}`,
 						url: `https://www.themoviedb.org/movie/${res.id}`,
-						icon_url: 'https://www.themoviedb.org/static_cache/v4/logos/208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png'
+						icon_url: 'https://www.themoviedb.org/static_cache/v4/logos/208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png',
 					},
 					color: 0x337fd5,
 					thumbnail: {
-						url: res.poster_path ? `https://image.tmdb.org/t/p/w500/${res.poster_path}` : null
+						url: res.poster_path ? `https://image.tmdb.org/t/p/w500/${res.poster_path}` : null,
 					},
 					fields: [
 						{
@@ -69,15 +69,15 @@ class Movie extends Command {
 						{
 							name: 'Rating (out of 10)',
 							value: res.vote_average,
-							inline: true
+							inline: true,
 						},
 					],
 					description: `${res.overview}`,
 					footer: {
 						text: `Powered by TMDB`,
-						icon_url: 'https://www.themoviedb.org/static_cache/v4/logos/208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png'
-					}
-				}
+						icon_url: 'https://www.themoviedb.org/static_cache/v4/logos/208x226-stacked-green-9484383bd9853615c113f020def5cbe27f6d08a84ff834f41371f223ebad4a3c.png',
+					},
+				},
 			});
 		} catch (e) {
 			return this.error('Uh oh! Something went wrong!');

@@ -16,9 +16,10 @@ class Birb extends Command {
     }
 
     async execute({ message }) {
+		const errorText = `Error: ${this.config.emojis.sadcat || '🐦'} No birds found.`;
+
         try {
 			const utils = this.utils;
-			const errorText = `Error: ${this.config.emojis.sadcat || '🐦'} No birds found.`;
 			const responses = [
 				{ search: 'Looking for a birdies...', found: 'Found one!' },
 			];
@@ -32,7 +33,7 @@ class Birb extends Command {
 			return msg.edit({
 				content: response.found,
 				embed: {
-					title: "https://random.birb.pw/tweet/random Tweet Tweet..",
+					title: 'Tweet Tweet..',
 					color: 0x008080,
 					image: {
 						url: `https://random.birb.pw/img/${res.text}`,
@@ -40,7 +41,7 @@ class Birb extends Command {
 					url: `https://random.birb.pw/img/${res.text}`,
 				},
 			});
-		} catch(err) {
+		} catch (err) {
 			return this.error(message.channel, errorText);
 		}
 	}

@@ -18,7 +18,8 @@ class Fun extends Module {
 		this.commands = commands;
 	}
 
-	start() {}
+	// eslint-disable-next-line no-empty-function
+	start() { }
 }
 
 exports.Fun = Fun;

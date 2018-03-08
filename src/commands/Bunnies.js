@@ -16,7 +16,7 @@ class Bunnies extends Command {
     }
 
     async execute({ message }) {
-		const errorText = `Error: ${this.config.emojis.rabbit || '🐰'} No bunnies found.`;
+		const errorText = `Error: ${this.config.emojis.sadcat || '🐰'} No bunnies found.`;
         try {
 			const utils = this.utils;
 			const responses = [
@@ -42,7 +42,7 @@ class Bunnies extends Command {
 				},
 			});
 		} catch(err) {
-			return this.error(message.channel, 'No Bunny pictures found... Something went wrong.);
+			return this.error(message.channel, errorText);
 		}
 	}
 }

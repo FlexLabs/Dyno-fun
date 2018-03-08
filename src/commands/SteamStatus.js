@@ -32,30 +32,30 @@ class SteamStatus extends Command {
                     color: 0x666666,
                     author: {
                         name: 'Steam Status',
-                        icon_url: icon
+                        icon_url: icon,
                     },
                     title: 'Steam Community',
                     description: steamcommunitystatus,
                     fields: [
                         {
                             name: 'Steam Client',
-                            value: steamclientstatus
+                            value: steamclientstatus,
                         },
                         {
                             name: 'Steam Store',
-                            value: steamstorestatus
-                        }
+                            value: steamstorestatus,
+                        },
                     ],
                     thumbnail: {
-                        url: icon
+                        url: icon,
                     },
                     timestamp: new Date(),
                     footer: {
-                        text: "via steamgaug.es"
-                    }
-                }
+                        text: 'via steamgaug.es',
+                    },
+                },
             });
-        } catch(err) {
+        } catch (err) {
             return this.error(message.channel, 'Error! Unable to fetch steam status.');
         }
     }

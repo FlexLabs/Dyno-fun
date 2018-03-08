@@ -14,6 +14,7 @@ exports.Pokemon = require('./Pokemon');
 exports.ChuckNorris = require('./ChuckNorris');
 exports.DadJoke = require('./DadJoke');
 exports.Joke = require('./Joke');
+exports.Math = require('./Math');
 exports.AdorableAvatar = require('./Adorable');
 exports.Country = require('./Country');
 exports.Birb = require('./Birb');
@@ -23,3 +24,7 @@ exports.Trivia = require('./Trivia');
 exports.Bunnies = require('./Bunnies');
 exports.YoMama = require('./YoMama');
 exports.Trump = require('./Trump');
+exports.Slots = require('./Slots');
+exports.Weather = require('./Weather');
+exports.Github = require('./Github');
+

@@ -15,9 +15,10 @@ class Pug extends Command {
     }
 
     async execute({ message }) {
+        const errorText = `Error: ${this.config.emojis.saddog || ''} No pugs found.`;
+
          try {
             const utils = this.utils;
-            const errorText = `Error: ${this.config.emojis.saddog || ''} No pugs found.`;
 			const responses = [
 				{ search: 'Finding a puggo...', found: this.config.emojis.carti || '<a:carti:393640270945845258>' },
 			];
@@ -42,7 +43,7 @@ class Pug extends Command {
                     url: res.body.message,
                 },
             });
-        } catch(err) {
+        } catch (err) {
             return this.error(message.channel, errorText);
         }
     }

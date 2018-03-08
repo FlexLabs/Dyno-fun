@@ -24,16 +24,13 @@ class Yoda extends Command {
 			let res = await superagent
 				.get(`https://yoda.p.mashape.com/yoda?sentence=${input}`)
 				.set('X-Mashape-Key', this._apiKey)
-				.set( 'Accept', 'text/plain' );
-			
-			return this.sendMessage(message.channel, res.text);
+				.set('Accept', 'text/plain');
 
+			return this.sendMessage(message.channel, res.text);
 		} catch (err) {
 			return this.error(message.channel, 'An error Occured. You loose connection with the force!');
 		}
-		
 	}
-	
 }
 
-module.exports = DadJoke;
+module.exports = Yoda;

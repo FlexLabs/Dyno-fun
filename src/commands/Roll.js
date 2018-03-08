@@ -7,7 +7,7 @@ class Roll extends Command {
 		this.aliases 		= ['roll'];
 		this.module 		= 'Fun';
 		this.description 	= 'Roll a dice (optional dice size: d4, d8, d10, d12, d20, d00)';
-		this.usage 		= 'roll [size (optional)] [number of dice]';
+		this.usage 			= 'roll [size (optional)] [number of dice]';
 		this.example 		= ['roll 5', 'roll d20', 'roll d00 4'];
 		this.cooldown 		= 3000;
 		this.expectedArgs 	= 1;
@@ -30,13 +30,11 @@ class Roll extends Command {
 
 		if (args.length > 0) {
 			if (dsize[args[0].toLowerCase()]) {
-				
-				dice = ( args[1] && !isNaN(args[1]) ) ? args[1] : 1;
-				
-				if (args[0] === 'd00' ) {
-					
+				dice = (args[1] && !isNaN(args[1])) ? args[1] : 1;
+
+				if (args[0] === 'd00') {
 					dice = dice > 5 ? 5 : dice;
-					
+
 					for (let i = 0; i < dice; i++) {
 						results.push((Math.floor(Math.random() * 10) * 10) + Math.floor(Math.random() * 10) + '%');
 					}

@@ -15,13 +15,17 @@ class AdorableAvatar extends Command {
 
 	execute({ message, args }) {
 		const search = args.join('-');
+
+		let user = this.resolveUser(message.channel.guild, search) || search;
+		user = user.username || search;
+
 		const embed = {
-			title: `Getting an adorable ${search}!`,
+			title: `Getting an adorable ${user}!`,
 			color: 0x3498db,
 			image: {
-				url: `https://api.adorable.io/avatars/285/${search}.png`,
+				url: `https://api.adorable.io/avatars/285/${user}.png`,
 			},
-			url: `https://api.adorable.io/avatars/285/${search}.png`,
+			url: `https://api.adorable.io/avatars/285/${user}.png`,
 		};
 
 		return this.sendMessage(message.channel, { embed });

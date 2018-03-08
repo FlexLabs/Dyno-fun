@@ -1,3 +1,4 @@
+
 const { Command } = require('@dyno.gg/dyno-core');
 const superagent = require('superagent');
 
@@ -16,7 +17,7 @@ class Bunnies extends Command {
     }
 
     async execute({ message }) {
-		const errorText = `Error: ${this.config.emojis.sadcat || '🐰'} No bunnies found.`;
+		const errorText = `Error: ${this.config.emojis.rabbit || '🐰'} No bunnies found.`;
         try {
 			const utils = this.utils;
 			const responses = [
@@ -42,9 +43,8 @@ class Bunnies extends Command {
 				},
 			});
 		} catch(err) {
-			return this.error(message.channel, errorText);
+			return this.error(message.channel, 'No Bunny pictures found... Something went wrong.');
 		}
 	}
 }
-
 module.exports = Bunnies;

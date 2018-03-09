@@ -76,7 +76,7 @@ class Weather extends Command {
                         },
                         {
                             name: 'High/Low Temperatures:',
-                            value: `Highest: ${forecast[0].high}°F (${this.ftoc(forecast[0].high)}°C)\nLowest: ${forecast[0].low}°F (${forecast[0].low}°C)`,
+                            value: `Highest: ${forecast[0].high}°F (${this.ftoc(forecast[0].high)}°C)\nLowest: ${forecast[0].low}°F (${this.ftoc(forecast[0].low)}°C)`,
                             inline: true,
                         },
                         {

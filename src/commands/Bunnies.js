@@ -6,7 +6,7 @@ class Bunnies extends Command {
     constructor(...args) {
         super(...args);
 
-        this.aliases      = ['bunny', 'bunnies'];
+        this.aliases      = ['bunny', 'bunnies']; // fun fact, i've been bitten by 2 Bunnies in my life time. ~Crispy
         this.module       = 'Fun';
         this.description  = 'Random Adorable Bunnies';
         this.usage        = 'bunny';
@@ -23,6 +23,7 @@ class Bunnies extends Command {
 				{ search: 'Looking for a bunnies...', found: 'Found one!' },
 			];
 
+			const response = responses[utils.getRandomInt(0, responses.length - 1)];
 			const msg = await this.sendMessage(message.channel, response.search);
 
 			let res = await superagent.get('https://api.bunnies.io/v2/loop/random/?media=poster');
@@ -44,4 +45,3 @@ class Bunnies extends Command {
 	}
 }
 module.exports = Bunnies;
-

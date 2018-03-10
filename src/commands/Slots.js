@@ -50,7 +50,7 @@ class Slots extends Command {
 		}
 	}
 
-	execute({ msg }) {
+	execute({ message }) {
 		const emojis = [':bullettrain_front:', ':white_sun_small_cloud:', ':lion_face:', ':earth_africa:', ':crown:', ':bullettrain_front:', ':white_sun_small_cloud:']; // Insert emoji strings of whatever you like
 
 		let frst = Math.floor(Math.random() * 5) + 1;
@@ -66,10 +66,10 @@ class Slots extends Command {
 		result += `\\\u2197     ${emojis[frst + 1]}  ${emojis[scnd + 1]}  ${emojis[thrd + 1]}     \\\u2196`;
 		result += `\n--------------------------\n\n\n`;
 
-		msg.channel.createMessage({
+		message.channel.createMessage({
 			embed: {
 				url: 'https://dynobot.net/',
-				description: `Spinning the wheels of fortune for [${msg.member.username}](https://dynobot.net)...`,
+				description: `Spinning the wheels of fortune for [${message.member.username}](https://dynobot.net)...`,
 				color: 1259143,
 				thumbnail: {
 					url: 'https://s18.postimg.org/hmpvac5qh/dynoslots_spin.gif',
@@ -78,15 +78,15 @@ class Slots extends Command {
 		}).then(newmsg => {
 			if (this.checkJackpot(gameid, bonus)) {
 				setTimeout(() => {
-					msg.channel.editMessage(newmsg.id, {
+					message.channel.editMessage(newmsg.id, {
 						embed: {
 							title: 'JACKPOT!',
 							url: 'https://dynobot.net/',
 							color: 13496340,
-							description: `${result}**Woah, thats a Jackpot!** You were lucky and reached the best result in this game possible!\nNow thats a thing to screenshot and share with your friends, [${msg.member.username}](https://dynobot.net)!`,
+							description: `${result}**Woah, thats a Jackpot!** You were lucky and reached the best result in this game possible!\nNow thats a thing to screenshot and share with your friends, [${message.member.username}](https://dynobot.net)!`,
 							footer: {
-								text: `Game played by ${msg.member.username}#${msg.member.discriminator}`,
-								icon_url: msg.member.avatarURL,
+								text: `Game played by ${message.member.username}#${message.member.discriminator}`,
+								icon_url: message.member.avatarURL,
 							},
 							thumbnail: {
 								url: 'https://s17.postimg.org/w4v2gei1r/tumblr_mh79cf_ON001r88gpzo1_400.gif',
@@ -96,15 +96,15 @@ class Slots extends Command {
 				}, 2000);
 			} else if (this.checkTriple(frst, scnd, thrd, gameid)) {
 				setTimeout(() => {
-					msg.channel.editMessage(newmsg.id, {
+					message.channel.editMessage(newmsg.id, {
 						embed: {
 							title: 'Congratulations!',
 							url: 'https://dynobot.net/',
 							color: 0x337fd5,
-							description: `${result}You got **three in a row**, [${msg.member.username}](https://dynobot.net). Amazing!`,
+							description: `${result}You got **three in a row**, [${message.member.username}](https://dynobot.net). Amazing!`,
 							footer: {
-								text: `Game played by ${msg.member.username}#${msg.member.discriminator}`,
-								icon_url: msg.member.avatarURL,
+								text: `Game played by ${message.member.username}#${message.member.discriminator}`,
+								icon_url: message.member.avatarURL,
 							},
 							thumbnail: {
 								url: 'https://s18.postimg.org/u6kzxx9bd/dynoslots_win2.gif',
@@ -114,15 +114,15 @@ class Slots extends Command {
 				}, 2000);
 			} else if (this.checkDouble(frst, scnd, thrd)) {
 				setTimeout(() => {
-					msg.channel.editMessage(newmsg.id, {
+					message.channel.editMessage(newmsg.id, {
 						embed: {
 							title: 'Thats a pair!',
 							url: 'https://dynobot.net/',
 							color: 8773445,
-							description: `${result}**Thats a pair!**, [${msg.member.username}](https://dynobot.net)! Not bad.`,
+							description: `${result}**Thats a pair!**, [${message.member.username}](https://dynobot.net)! Not bad.`,
 							footer: {
-								text: `Game played by ${msg.member.username}#${msg.member.discriminator}`,
-								icon_url: msg.member.avatarURL,
+								text: `Game played by ${message.member.username}#${message.member.discriminator}`,
+								icon_url: message.member.avatarURL,
 							},
 							thumbnail: {
 								url: 'https://s17.postimg.org/j0pi3qd5b/giphy.gif',
@@ -132,15 +132,15 @@ class Slots extends Command {
 				}, 2000);
 			} else { // if none of the above was true, the player has lost, so no additional check here
 				setTimeout(() => {
-					msg.channel.editMessage(newmsg.id, {
+					message.channel.editMessage(newmsg.id, {
 						embed: {
 							title: 'Try again!',
 							url: 'https://dynobot.net/',
 							color: 0xFF0000,
-							description: `${result}**You lost,** better luck next time, [${msg.member.username}](https://dynobot.net)!`,
+							description: `${result}**You lost,** better luck next time, [${message.member.username}](https://dynobot.net)!`,
 							footer: {
-								text: `Game played by ${msg.member.username}#${msg.member.discriminator}`,
-								icon_url: msg.member.avatarURL,
+								text: `Game played by ${message.member.username}#${message.member.discriminator}`,
+								icon_url: message.member.avatarURL,
 							},
 							thumbnail: {
 								url: 'https://s17.postimg.org/dcj7cxgjj/giphy.gif',

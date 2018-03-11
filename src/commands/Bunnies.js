@@ -37,9 +37,9 @@ class Bunnies extends Command {
 					title: 'Bunnies!!!',
 					color: 0x008080,
 					image: {
-						url: `https://random.birb.pw/img/${res.body.media.poster}`,
+						url: `https://api.bunnies.io/v2/loop/random/${res.body.media}`,
 					},
-					url: `https://random.birb.pw/img/${res.body.media.poster}`,
+					url: `https://api.bunnies.io/v2/loop/random/${res.body.media}`,
 				},
 			});
 		} catch (err) {

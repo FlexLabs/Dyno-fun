@@ -17,7 +17,7 @@ class YoMama extends Command {
 		async execute({ message }) {
 			try {
 				let res = await superagent.get('http://api.yomomma.info/');
-			return this.sendMessage(message.channel, JSON.parse(res.text).joke);
+				return this.sendMessage(message.channel, JSON.parse(res.text).joke);
 			} catch (err) {
 				return this.error(message.channel, 'No Mama jokes founds...  Something went wrong.');
 			}

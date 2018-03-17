@@ -7,7 +7,7 @@ class Slots extends Command {
 
 		this.aliases = ['slots'];
 		this.module = 'Fun';
-		this.description = 'Spin the slots and win the jackpot! ...or loose everything.';
+		this.description = 'Spin the slots and win the jackpot! ...or lose everything.';
 		this.usage = 'slots';
 		this.example = 'slots';
 		this.cooldown = 5000;

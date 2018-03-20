@@ -348,7 +348,7 @@ class Country extends Command {
                         },
                         {
                             name: 'Area',
-                            value: `${countryareakm.toLocaleString('en')}km (${countryaream}m)`,
+                            value: `${countryareakm.toLocaleString('en')}km\xB2 (${countryaream}mi\xB2)`,
                             inline: true,
                         },
                     ],

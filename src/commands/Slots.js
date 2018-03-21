@@ -51,7 +51,15 @@ class Slots extends Command {
 	}
 
 	execute({ message }) {
-		const emojis = [':bullettrain_front:', ':white_sun_small_cloud:', ':lion_face:', ':earth_africa:', ':crown:', ':bullettrain_front:', ':white_sun_small_cloud:']; // Insert emoji strings of whatever you like
+		const emojis = [
+			':bullettrain_front:',
+			':white_sun_small_cloud:',
+			':lion_face:',
+			':earth_africa:',
+			':crown:',
+			':bullettrain_front:',
+			':white_sun_small_cloud:',
+		]; // Insert emoji strings of whatever you like
 
 		let first = Math.floor(Math.random() * 5) + 1;
 		let second = Math.floor(Math.random() * 5) + 1;
@@ -68,7 +76,7 @@ class Slots extends Command {
 
 		let url = this.config.site.host;
 
-		return this.sendMessage(message.channel.id, {
+		return this.sendMessage(message.channel, {
 			embed: {
 				url: url,
 				description: `Spinning the wheels of fortune for [${message.member.username}](${url})...`,

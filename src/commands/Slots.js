@@ -68,7 +68,7 @@ class Slots extends Command {
 
 		let url = this.config.site.host;
 
-		this.sendMessage(message.channel.id, {
+		return this.sendMessage(message.channel.id, {
 			embed: {
 				url: url,
 				description: `Spinning the wheels of fortune for [${message.member.username}](${url})...`,

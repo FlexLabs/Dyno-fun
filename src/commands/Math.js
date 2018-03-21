@@ -1,11 +1,11 @@
 const { Command } = require('@dyno.gg/dyno-core');
 const superagent = require('superagent');
 const math = require('mathjs');
-//
+
 async function request(i) {
     return await superagent.get(`http://numbersapi.com/${i}?json`);
 }
-//
+
 
 class Math extends Command {
 	constructor(...args) {

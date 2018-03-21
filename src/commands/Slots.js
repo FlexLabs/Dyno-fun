@@ -5,12 +5,12 @@ class Slots extends Command {
 	constructor(...args) {
 		super(...args);
 
-		this.aliases = ['slots'];
-		this.module = 'Fun';
-		this.description = 'Spin the slots and win the jackpot! ...or lose everything.';
-		this.usage = 'slots';
-		this.example = 'slots';
-		this.cooldown = 5000;
+		this.aliases      = ['slots'];
+		this.module       = 'Fun';
+		this.description  = 'Spin the slots and win the jackpot! ...or lose everything.';
+		this.usage        = 'slots';
+		this.example      = 'slots';
+		this.cooldown     = 5000;
 		this.expectedArgs = 0;
 	}
 
@@ -66,89 +66,91 @@ class Slots extends Command {
 		result += `\\\u2197     ${emojis[frst + 1]}  ${emojis[scnd + 1]}  ${emojis[thrd + 1]}     \\\u2196`;
 		result += `\n--------------------------\n\n\n`;
 
-		message.channel.createMessage({
-			embed: {
-				url: 'https://dynobot.net/',
-				description: `Spinning the wheels of fortune for [${message.member.username}](https://dynobot.net)...`,
-				color: 1259143,
-				thumbnail: {
-					url: 'https://s18.postimg.org/hmpvac5qh/dynoslots_spin.gif',
+		return new Promise(res => {
+			message.channel.createMessage({
+				embed: {
+					url: 'https://dynobot.net/',
+					description: `Spinning the wheels of fortune for [${message.member.username}](https://dynobot.net)...`,
+					color: 1259143,
+					thumbnail: {
+						url: 'https://s18.postimg.org/hmpvac5qh/dynoslots_spin.gif',
+					},
 				},
-			},
-		}).then(newmsg => {
-			if (this.checkJackpot(gameid, bonus)) {
-				setTimeout(() => {
-					message.channel.editMessage(newmsg.id, {
-						embed: {
-							title: 'JACKPOT!',
-							url: 'https://dynobot.net/',
-							color: 13496340,
-							description: `${result}**Woah, thats a Jackpot!** You were lucky and reached the best result in this game possible!\nNow thats a thing to screenshot and share with your friends, [${message.member.username}](https://dynobot.net)!`,
-							footer: {
-								text: `Game played by ${message.member.username}#${message.member.discriminator}`,
-								icon_url: message.member.avatarURL,
+			}).then(msg => {
+				if (this.checkJackpot(gameid, bonus)) {
+					setTimeout(() => {
+						res(message.channel.editMessage(msg.id, {
+							embed: {
+								title: 'JACKPOT!',
+								url: 'https://dynobot.net/',
+								color: 13496340,
+								description: `${result}**Woah, thats a Jackpot!** You were lucky and reached the best result in this game possible!\nNow thats a thing to screenshot and share with your friends, [${message.member.username}](https://dynobot.net)!`,
+								footer: {
+									text: `Game played by ${message.member.username}#${message.member.discriminator}`,
+									icon_url: message.member.avatarURL,
+								},
+								thumbnail: {
+									url: 'https://s17.postimg.org/w4v2gei1r/tumblr_mh79cf_ON001r88gpzo1_400.gif',
+								},
 							},
-							thumbnail: {
-								url: 'https://s17.postimg.org/w4v2gei1r/tumblr_mh79cf_ON001r88gpzo1_400.gif',
+						}));
+					}, 2000);
+				} else if (this.checkTriple(frst, scnd, thrd, gameid)) {
+					setTimeout(() => {
+						res(message.channel.editMessage(msg.id, {
+							embed: {
+								title: 'Congratulations!',
+								url: 'https://dynobot.net/',
+								color: 0x337fd5,
+								description: `${result}You got **three in a row**, [${message.member.username}](https://dynobot.net). Amazing!`,
+								footer: {
+									text: `Game played by ${message.member.username}#${message.member.discriminator}`,
+									icon_url: message.member.avatarURL,
+								},
+								thumbnail: {
+									url: 'https://s18.postimg.org/u6kzxx9bd/dynoslots_win2.gif',
+								},
 							},
-						},
-					});
-				}, 2000);
-			} else if (this.checkTriple(frst, scnd, thrd, gameid)) {
-				setTimeout(() => {
-					message.channel.editMessage(newmsg.id, {
-						embed: {
-							title: 'Congratulations!',
-							url: 'https://dynobot.net/',
-							color: 0x337fd5,
-							description: `${result}You got **three in a row**, [${message.member.username}](https://dynobot.net). Amazing!`,
-							footer: {
-								text: `Game played by ${message.member.username}#${message.member.discriminator}`,
-								icon_url: message.member.avatarURL,
+						}));
+					}, 2000);
+				} else if (this.checkDouble(frst, scnd, thrd)) {
+					setTimeout(() => {
+						res(message.channel.editMessage(msg.id, {
+							embed: {
+								title: 'Thats a pair!',
+								url: 'https://dynobot.net/',
+								color: 8773445,
+								description: `${result}**Thats a pair!**, [${message.member.username}](https://dynobot.net)! Not bad.`,
+								footer: {
+									text: `Game played by ${message.member.username}#${message.member.discriminator}`,
+									icon_url: message.member.avatarURL,
+								},
+								thumbnail: {
+									url: 'https://s17.postimg.org/j0pi3qd5b/giphy.gif',
+								},
 							},
-							thumbnail: {
-								url: 'https://s18.postimg.org/u6kzxx9bd/dynoslots_win2.gif',
+						}));
+					}, 2000);
+				} else { // if none of the above was true, the player has lost, so no additional check here
+					setTimeout(() => {
+						res(message.channel.editMessage(msg.id, {
+							embed: {
+								title: 'Try again!',
+								url: 'https://dynobot.net/',
+								color: 0xFF0000,
+								description: `${result}**You lost,** better luck next time, [${message.member.username}](https://dynobot.net)!`,
+								footer: {
+									text: `Game played by ${message.member.username}#${message.member.discriminator}`,
+									icon_url: message.member.avatarURL,
+								},
+								thumbnail: {
+									url: 'https://s17.postimg.org/dcj7cxgjj/giphy.gif',
+								},
 							},
-						},
-					});
-				}, 2000);
-			} else if (this.checkDouble(frst, scnd, thrd)) {
-				setTimeout(() => {
-					message.channel.editMessage(newmsg.id, {
-						embed: {
-							title: 'Thats a pair!',
-							url: 'https://dynobot.net/',
-							color: 8773445,
-							description: `${result}**Thats a pair!**, [${message.member.username}](https://dynobot.net)! Not bad.`,
-							footer: {
-								text: `Game played by ${message.member.username}#${message.member.discriminator}`,
-								icon_url: message.member.avatarURL,
-							},
-							thumbnail: {
-								url: 'https://s17.postimg.org/j0pi3qd5b/giphy.gif',
-							},
-						},
-					});
-				}, 2000);
-			} else { // if none of the above was true, the player has lost, so no additional check here
-				setTimeout(() => {
-					message.channel.editMessage(newmsg.id, {
-						embed: {
-							title: 'Try again!',
-							url: 'https://dynobot.net/',
-							color: 0xFF0000,
-							description: `${result}**You lost,** better luck next time, [${message.member.username}](https://dynobot.net)!`,
-							footer: {
-								text: `Game played by ${message.member.username}#${message.member.discriminator}`,
-								icon_url: message.member.avatarURL,
-							},
-							thumbnail: {
-								url: 'https://s17.postimg.org/dcj7cxgjj/giphy.gif',
-							},
-						},
-					});
-				}, 2000);
-			}
+						}));
+					}, 2000);
+				}
+			});
 		});
 	}
 }

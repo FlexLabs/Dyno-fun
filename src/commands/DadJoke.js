@@ -1,5 +1,3 @@
-'use strict';
-
 const { Command } = require('@dyno.gg/dyno-core');
 const superagent = require('superagent');
 

@@ -54,7 +54,7 @@ class Define extends Command {
 						text: `Part of speech: ${part_of_speech}`
 					},
 					timestamp: new Date()
-				}; 
+				};
 				if (res.results[0].senses[0].examples && res.results[0].senses[0].examples[0].text) embed.description += `\n\n**Example:** ${firstUpperCase(res.results[0].senses[0].examples[0].text)}.`;
 			} catch (err) {
 				return this.error(message.channel, 'Couldn\'t find any definition for this word!');

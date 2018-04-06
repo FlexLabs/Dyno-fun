@@ -22,6 +22,12 @@ class Prefetcher {
 
         this.cache.push(res);
     }
+
+    init() {
+        for(let i = 0; i < 4; i++) {
+            this.prefetch();
+        }
+    }
 }
 
 module.exports = Prefetcher;

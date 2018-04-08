@@ -23,3 +23,4 @@ exports.CatFacts = require('./CatFacts');
 exports.Slots = require('./Slots');
 exports.Weather = require('./Weather');
 exports.Github = require('./Github');
+exports.DiscordStatus = require('./DiscordStatus');

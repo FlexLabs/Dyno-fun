@@ -7,7 +7,7 @@ class CatFacts extends Command {
 
 		this.aliases        = ['catfact', 'catfacts']; // meow facts
 		this.module         = 'Fun';
-		this.description    = 'Get random Cat Facts with this commmand';
+		this.description    = 'Get random Cat Facts with this command';
 		this.usage          = 'catfact';
 		this.example        = 'catfact';
 		this.cooldown       = 5000;

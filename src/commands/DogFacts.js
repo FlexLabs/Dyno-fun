@@ -7,7 +7,7 @@ class DogFacts extends Command {
 
 		this.aliases        = ['dogfact', 'doggofact']; // woof facts
 		this.module         = 'Fun';
-		this.description    = 'Get random Dog Facts with this commmand';
+		this.description    = 'Get random Dog Facts with this command';
 		this.usage          = 'dogfact';
 		this.example        = 'dogfact';
 		this.cooldown       = 5000;

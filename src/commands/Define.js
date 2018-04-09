@@ -1,6 +1,10 @@
 const { Command } = require('@dyno.gg/dyno-core');
 const superagent = require('superagent');
 
+function firstUpperCase(msg) {
+	return msg[0].toUpperCase() + msg.substr(1);
+}
+
 class Define extends Command {
 	constructor(...args) {
 		super(...args);
@@ -41,23 +45,23 @@ class Define extends Command {
 				res = JSON.parse(res.text);
 
 				definition = res.results[0].senses[0].definition[0];
-				if (!res.results[0].senses[0].examples) example = 'No example given.';
-				else example = res.results[0].senses[0].examples[0].text;
 				part_of_speech = res.results[0].part_of_speech;
+				let embed = {
+					title: `Word: ${word}`,
+					description: `**Definition:** ${definition}.`,
+					color: 0x3498db,
+					footer: {
+						text: `Part of speech: ${part_of_speech}`
+					},
+					timestamp: new Date()
+				};
+				if (res.results[0].senses[0].examples && res.results[0].senses[0].examples[0].text) embed.description += `\n\n**Example:** ${firstUpperCase(res.results[0].senses[0].examples[0].text)}.`;
 			} catch (err) {
 				return this.error(message.channel, 'Couldn\'t find any definition for this word!');
 			}
 		}
 
-		return this.sendMessage(message.channel, { embed: {
-			title: `Word: ${word}`,
-			description: `**Definition:** ${definition}\n\n**Example:** ${example}`,
-			color: 0x3498db,
-			footer: {
-				text: `Part of speech: ${part_of_speech}`,
-			},
-			timestamp: new Date(),
-		} });
+		return this.sendMessage(message.channel, { embed: embed });
 	}
 }
 

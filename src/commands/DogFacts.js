@@ -12,14 +12,14 @@ class DogFacts extends Command {
 		this.example      = 'dogfact';
 		this.cooldown     = 5000;
 		this.expectedArgs = 0;
-		this.factCache    = new Prefetcher('https://fact.birb.pw/api/v1/dog');
+		this._factCache    = new Prefetcher('https://fact.birb.pw/api/v1/dog');
 
-		this.factCache.init();
+		this._factCache.init();
 	}
 
 	async execute({ message }) {
 		try {
-			let res = await this.factCache.get();
+			let res = await this._factCache.get();
 
 			return this.sendMessage(message.channel, res.body.string);
 		} catch (err) {

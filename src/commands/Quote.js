@@ -12,14 +12,14 @@ class Quote extends Command {
 		this.example      = 'quote';
 		this.cooldown     = 5000;
 		this.expectedArgs = 0;
-		this.quoteCache   = new Prefetcher('https://talaikis.com/api/quotes/random/');
+		this._quoteCache   = new Prefetcher('https://talaikis.com/api/quotes/random/');
 
-		this.quoteCache.init();
+		this._quoteCache.init();
 	}
 
 	async execute({ message }) {
 		try {
-			let res = await this.quoteCache.get();
+			let res = await this._quoteCache.get();
 			return this.sendMessage(message.channel, `${res.body.quote} - **${res.body.author}**`);
 		} catch (err) {
 			return this.error(message.channel, 'An error occured: Unable to fetch quote.');

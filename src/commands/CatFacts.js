@@ -12,14 +12,14 @@ class CatFacts extends Command {
 		this.example      = 'catfact';
 		this.cooldown     = 5000;
 		this.expectedArgs = 0;
-		this.factCache    = new Prefetcher('https://catfact.ninja/fact');
+		this._factCache    = new Prefetcher('https://catfact.ninja/fact');
 
-		this.factCache.init();
+		this._factCache.init();
 	}
 
 		async execute({ message }) {
 			try {
-				let res = await this.factCache.get();
+				let res = await this._factCache.get();
 
 				return this.sendMessage(message.channel, res.body.fact);
 			} catch (err) {

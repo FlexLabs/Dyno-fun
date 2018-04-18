@@ -12,14 +12,14 @@ class ChuckNorris extends Command {
 		this.example      = 'dynorris';
 		this.cooldown     = 5000;
 		this.expectedArgs = 0;
-		this.chuchCache   = new Prefetcher('https://api.icndb.com/jokes/random?firstName=Dyno');
+		this._chuchCache   = new Prefetcher('https://api.icndb.com/jokes/random?firstName=Dyno');
 
-		this.chuchCache.init();
+		this._chuchCache.init();
 	}
 
 	async execute({ message }) {
 		try {
-			let res = await this.chuchCache.get();
+			let res = await this._chuchCache.get();
 
 			return this.sendMessage(message.channel, res.body.value.joke);
 		} catch (err) {

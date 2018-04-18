@@ -12,9 +12,9 @@ class Dog extends Command {
         this.example      = 'dog';
         this.cooldown     = 7500;
         this.expectedArgs = 0;
-        this.dogCache     = new Prefetcher('https://dog.ceo/api/breeds/image/random');
+        this._dogCache     = new Prefetcher('https://dog.ceo/api/breeds/image/random');
 
-        this.dogCache.init();
+        this._dogCache.init();
     }
 
     async execute({ message }) {
@@ -29,7 +29,7 @@ class Dog extends Command {
 			const response = responses[utils.getRandomInt(0, responses.length - 1)];
             const msg = await this.sendMessage(message.channel, response.search);
 
-            let res = await this.dogCache.get();
+            let res = await this._dogCache.get();
 
             if (!res || !res.body || !res.body.message) {
                 return this.error(message.channel, errorText);

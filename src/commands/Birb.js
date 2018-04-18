@@ -13,9 +13,9 @@ class Birb extends Command {
 		this.example      = 'bird';
 		this.cooldown     = 7500;
 		this.expectedArgs = 0;
-		this.birbCache    = new Prefetcher('https://random.birb.pw/tweet/');
+		this._birbCache    = new Prefetcher('https://random.birb.pw/tweet/');
 
-		this.birbCache.init();
+		this._birbCache.init();
 	}
 
 	async execute({ message }) {
@@ -30,7 +30,7 @@ class Birb extends Command {
 			const response = responses[utils.getRandomInt(0, responses.length - 1)];
 			const msg = await this.sendMessage(message.channel, response.search);
 
-			let res = await this.birbCache.get();
+			let res = await this._birbCache.get();
 
 			return msg.edit({
 				content: response.found,

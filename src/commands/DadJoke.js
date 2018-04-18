@@ -12,14 +12,14 @@ class DadJoke extends Command {
 		this.example      = 'dadjoke';
 		this.cooldown     = 5000;
 		this.expectedArgs = 0;
-		this.dadCache     = new Prefetcher('https://icanhazdadjoke.com/', { Accept: 'application/json' });
+		this._dadCache     = new Prefetcher('https://icanhazdadjoke.com/', { Accept: 'application/json' });
 
-		this.init(this.dadCache);
+		this._dadCache.init();
 	}
 
 	async execute({ message }) {
 		try {
-			let res = await this.dadCache.get();
+			let res = await this._dadCache.get();
 
 			return this.sendMessage(message.channel, JSON.parse(res.text).joke);
 		} catch (err) {

@@ -12,9 +12,9 @@ class Pug extends Command {
         this.example      = 'pug';
         this.cooldown     = 7500;
         this.expectedArgs = 0;
-        this.pugCache     = new Prefetcher('https://dog.ceo/api/breed/pug/images/random');
+        this._pugCache     = new Prefetcher('https://dog.ceo/api/breed/pug/images/random');
 
-        this.pugCache.init();
+        this._pugCache.init();
     }
 
     async execute({ message }) {
@@ -29,7 +29,7 @@ class Pug extends Command {
 			const response = responses[utils.getRandomInt(0, responses.length - 1)];
             const msg = await this.sendMessage(message.channel, response.search);
 
-			let res = await this.pugCache.get();
+			let res = await this._pugCache.get();
 
             if (!res || !res.body || !res.body.message) {
                 return this.error(message.channel, errorText);

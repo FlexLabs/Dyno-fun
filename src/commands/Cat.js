@@ -13,9 +13,9 @@ class Cat extends Command {
 		this.example      = 'cat';
 		this.cooldown     = 7500;
 		this.expectedArgs = 0;
-		this.catCache     = new Prefetcher('http://thecatapi.com/api/images/get?format=src&results_per_page=1');
+		this._catCache     = new Prefetcher('http://thecatapi.com/api/images/get?format=src&results_per_page=1');
 
-		this.catCache.init();
+		this._catCache.init();
 	}
 
 	async execute({ message }) {
@@ -30,7 +30,7 @@ class Cat extends Command {
 			const response = responses[utils.getRandomInt(0, responses.length - 1)];
 			const msg = await this.sendMessage(message.channel, response.search);
 
-			let res = await this.catCache.get();
+			let res = await this._catCache.get();
 
 			if (!res || !res.redirects || !res.redirects.length) {
 				return this.error(message.channel, errorText);

@@ -1,5 +1,5 @@
 const { Command } = require('@dyno.gg/dyno-core');
-const superagent = require('superagent');
+const Prefetcher = require('../Prefetcher');
 
 class Quote extends Command {
 	constructor(...args) {
@@ -12,11 +12,14 @@ class Quote extends Command {
 		this.example      = 'quote';
 		this.cooldown     = 5000;
 		this.expectedArgs = 0;
+		this.quoteCache   = new Prefetcher('https://talaikis.com/api/quotes/random/');
+
+		this.quoteCache.init();
 	}
 
 	async execute({ message }) {
 		try {
-			let res = await superagent.get('https://talaikis.com/api/quotes/random/');
+			let res = await this.quoteCache.get();
 			return this.sendMessage(message.channel, `${res.body.quote} - **${res.body.author}**`);
 		} catch (err) {
 			return this.error(message.channel, 'An error occured: Unable to fetch quote.');

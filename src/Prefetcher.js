@@ -3,29 +3,39 @@ const superagent = require('superagent');
 class Prefetcher {
     constructor(url, options) {
         this.url = url;
-        this.options = options;
+        this.options = options || {};
         this.cache = [];
     }
 
-    get() {
-        let item = this.cache[0];
-        this.cache.splice(0, 1);
-        this.prefetch();
+    async get() {
+        let item;
+
+        if (this.cache[0]) {
+            item = this.cache.splice(0, 1);
+        } else {
+            item = await this.fetch(false);
+        }
+
+        this.fetch(true).catch(() => null);
         return item;
     }
 
-    async prefetch() {
-        let res = await superagent
+    async fetch(prefetch) {
+        if (!prefetch) {
+            return await superagent
+                .get(this.url)
+                .set(this.options);
+        }
+        let item = await superagent
             .get(this.url)
-            .set({ Authorization: this.options.auth ? this.options.auth : '' })
-            .set({ Accept: this.options.accept ? this.options.accept : 'application/json' });
+            .set(this.options);
 
-        this.cache.push(res);
+        this.cache.push(item);
     }
 
-    init() {
-        for(let i = 0; i < 4; i++) {
-            this.prefetch();
+    async init() {
+        for (let i = 0; i < 10; i++) {
+            this.fetch(true).catch(() => null);
         }
     }
 }

@@ -1,22 +1,25 @@
 const { Command } = require('@dyno.gg/dyno-core');
-const superagent = require('superagent');
+const Prefetcher = require('../Prefetcher');
 
 class DogFacts extends Command {
 	constructor(...args) {
 		super(...args);
 
-		this.aliases        = ['dogfact', 'doggofact']; // woof facts
-		this.module         = 'Fun';
-		this.description    = 'Get random Dog Facts with this commmand';
-		this.usage          = 'dogfact';
-		this.example        = 'dogfact';
-		this.cooldown       = 5000;
-		this.expectedArgs   = 0;
+		this.aliases      = ['dogfact', 'doggofact']; // woof facts
+		this.module       = 'Fun';
+		this.description  = 'Get random Dog Facts with this commmand';
+		this.usage        = 'dogfact';
+		this.example      = 'dogfact';
+		this.cooldown     = 5000;
+		this.expectedArgs = 0;
+		this.factCache    = new Prefetcher('https://fact.birb.pw/api/v1/dog');
+
+		this.factCache.init();
 	}
 
 	async execute({ message }) {
 		try {
-			let res = await superagent.get('https://fact.birb.pw/api/v1/dog');
+			let res = await this.factCache.get();
 
 			return this.sendMessage(message.channel, res.body.string);
 		} catch (err) {

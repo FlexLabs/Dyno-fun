@@ -7,10 +7,12 @@ const limitedEval = math.eval;
 math.import({
     import:     function() { throw new Error('Import is disabled'); },
     createUnit: function() { throw new Error('CreateUnit is disabled'); },
+    unit:       function() { throw new Error('Unit is disabled'); },
     eval:       function() { throw new Error('Eval is disabled'); },
     parse:      function() { throw new Error('Parse is disabled'); },
     simplify:   function() { throw new Error('Simplify is disabled'); },
     derivative: function() { throw new Error('Derivative is disabled'); },
+    config:     function() { throw new Error('Config is disabled'); },
 }, { override: true });
 /* eslint-enable func-names */
 

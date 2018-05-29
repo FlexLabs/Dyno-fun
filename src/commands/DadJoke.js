@@ -1,5 +1,5 @@
 const { Command } = require('@dyno.gg/dyno-core');
-const superagent = require('superagent');
+const Prefetcher = require('../Prefetcher');
 
 class DadJoke extends Command {
 	constructor(...args) {
@@ -12,13 +12,14 @@ class DadJoke extends Command {
 		this.example      = 'dadjoke';
 		this.cooldown     = 5000;
 		this.expectedArgs = 0;
+		this._dadCache     = new Prefetcher('https://icanhazdadjoke.com/', { Accept: 'application/json' });
+
+		this._dadCache.init();
 	}
 
 	async execute({ message }) {
 		try {
-			let res = await superagent
-				.get('https://icanhazdadjoke.com/')
-				.set({ Accept: 'application/json' });
+			let res = await this._dadCache.get();
 
 			return this.sendMessage(message.channel, JSON.parse(res.text).joke);
 		} catch (err) {

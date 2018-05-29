@@ -1,24 +1,27 @@
 const { Command } = require('@dyno.gg/dyno-core');
-const superagent = require('superagent');
+const Prefetcher = require('../Prefetcher');
 
 
 class Birb extends Command {
-    constructor(...args) {
-        super(...args);
+	constructor(...args) {
+		super(...args);
 
-        this.aliases      = ['bird', 'birb', 'lunar'];
-        this.module       = 'Fun';
-        this.description  = 'Random Adorable Birdies';
-        this.usage        = 'bird';
-        this.example      = 'bird';
-        this.cooldown     = 7500;
-        this.expectedArgs = 0;
-    }
+		this.aliases      = ['bird', 'birb', 'lunar'];
+		this.module       = 'Fun';
+		this.description  = 'Random Adorable Birdies';
+		this.usage        = 'bird';
+		this.example      = 'bird';
+		this.cooldown     = 7500;
+		this.expectedArgs = 0;
+		this._birbCache    = new Prefetcher('https://random.birb.pw/tweet/');
 
-    async execute({ message }) {
+		this._birbCache.init();
+	}
+
+	async execute({ message }) {
 		const errorText = `Error: ${this.config.emojis.sadcat || '🐦'} No birds found.`;
 
-        try {
+		try {
 			const utils = this.utils;
 			const responses = [
 				{ search: 'Looking for a birdies...', found: 'Found one!' },
@@ -27,8 +30,7 @@ class Birb extends Command {
 			const response = responses[utils.getRandomInt(0, responses.length - 1)];
 			const msg = await this.sendMessage(message.channel, response.search);
 
-			let res = await superagent.get('https://random.birb.pw/tweet/');
-
+			let res = await this._birbCache.get();
 
 			return msg.edit({
 				content: response.found,

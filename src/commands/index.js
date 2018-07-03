@@ -20,6 +20,11 @@ exports.Country = require('./Country');
 exports.Birb = require('./Birb');
 exports.DogFacts = require('./DogFacts');
 exports.CatFacts = require('./CatFacts');
+exports.Trivia = require('./Trivia');
+exports.Bunnies = require('./Bunnies');
+exports.YoMama = require('./YoMama');
+exports.Trump = require('./Trump');
 exports.Slots = require('./Slots');
 exports.Weather = require('./Weather');
 exports.Github = require('./Github');
+

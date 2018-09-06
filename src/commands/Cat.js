@@ -13,7 +13,7 @@ class Cat extends Command {
 		this.example      = 'cat';
 		this.cooldown     = 7500;
 		this.expectedArgs = 0;
-		this._catCache     = new Prefetcher('http://thecatapi.com/api/images/get?format=src&results_per_page=1');
+		this._catCache     = new Prefetcher('https://api.thecatapi.com/v1/images/search?format=src&mime_types=image/gif');
 
 		this._catCache.init();
 	}

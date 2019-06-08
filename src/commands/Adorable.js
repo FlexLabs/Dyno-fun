@@ -14,7 +14,12 @@ class AdorableAvatar extends Command {
 	}
 
 	execute({ message, args }) {
-		const search = args.join('-');
+		let search = args.join(' ');
+		const members = message.channel.guild.members;
+		if(members.get(search)) search = members.get(search).username
+		else if(message.mentions[0]) search = message.mentions[0].username
+		else search = search;
+		search = search.split(' ').join('-')
 		const embed = {
 			title: `Getting an adorable ${search}!`,
 			color: 0x3498db,
